@@ -1,0 +1,11 @@
+{
+  "name": "mono-repo",
+  "private": true,
+  "version": "1.0.0",
+  "main": "package.json",
+  "license": "UNLICENSED",
+  "scripts": {
+    "main": "cd horowitz && npm run dev",
+    "cms": "cd cms && npm run dev"
+  }
+}
