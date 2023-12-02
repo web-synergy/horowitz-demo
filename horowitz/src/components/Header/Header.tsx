@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <AppBar
       component="header"
-      position="fixed"
+      position="absolute"
       sx={{ background: "transparent", boxShadow: "none" }}
     >
       <Container>
