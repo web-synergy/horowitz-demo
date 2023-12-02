@@ -1,9 +1,8 @@
-import React from "react";
-import Container from "@mui/material/Container";
 import Header from "../Header/Header";
 import heroImg from "../Header/main-photo.png";
 import { Box, Button, Typography } from "@mui/material";
 import NewsSection from "../NewsSection/NewsSection";
+import QuotSection from "../QuotSection/QuotSection";
 
 const MainPage = () => {
   return (
@@ -16,6 +15,7 @@ const MainPage = () => {
           backgroundImage: ` url(${heroImg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          backdropFilter: "blur(2.5px)",
           height: "780px",
           paddingTop: "290px",
         }}
@@ -51,6 +51,7 @@ const MainPage = () => {
               fontSize: "62px",
               fontWeight: 600,
               lineHeight: "80px",
+              textTransform: "uppercase",
             }}
           >
             КОНКУРС ГОРОВИЦЯ КИЇВ-ЖЕНЕВА
@@ -100,9 +101,9 @@ const MainPage = () => {
           </Box>
         </Box>
       </Box>
-
       {/* Інші секції */}
       <NewsSection />
+      <QuotSection />
     </div>
   );
 };
