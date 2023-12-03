@@ -9,13 +9,7 @@ import news3 from "./news3.png";
 const NewsSection = () => {
   return (
     <Box component="section" sx={{ padding: "120px 0" }}>
-      <Container
-        sx={{
-          backgroundColor: "#FFFFFF",
-          paddingTop: "50px",
-          paddingBottom: "50px",
-        }}
-      >
+      <Container>
         <Typography
           variant="h4"
           align="center"
