@@ -1,10 +1,13 @@
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { WrapperImg } from "./styles";
 import sponsor1 from "./sponsor1.png";
 import sponsor2 from "./sponsor2.png";
 import sponsor3 from "./sponsor3.png";
 import sponsor4 from "./sponsor4.png";
+import sponsor5 from "./sponsor5.png";
+import sponsor6 from "./sponsor6.jpg";
+import sponsor7 from "./sponsor7.png";
 
 // Import Swiper styles
 import "swiper/css";
@@ -15,7 +18,7 @@ import "swiper/css/pagination";
 import "./sliderStyles.css";
 
 // import required modules
-// import { Keyboard, Navigation, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 const SponsorCarousel = () => {
   return (
@@ -54,61 +57,65 @@ const SponsorCarousel = () => {
           />
         </Typography>
         <Swiper
+          effect={"coverflow"}
           slidesPerView={4}
-          speed={700}
-          spaceBetween={150}
-          //   centeredSlides={true}
+          speed={2000}
+          spaceBetween={30}
+          loop={true}
+          centeredSlides={true}
+          autoplay={{
+            delay: 600,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay]}
           className="mySwiper"
         >
           <SwiperSlide>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: { xs: "column-reverse", md: "row" },
-                gap: { xs: "24px", lg: "26px" },
-              }}
-            >
+            <Box>
               <WrapperImg>
                 <img src={sponsor1} alt="Зображення до події" />
               </WrapperImg>
             </Box>
           </SwiperSlide>
           <SwiperSlide>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: { xs: "column-reverse", md: "row" },
-                gap: { xs: "24px", lg: "26px" },
-              }}
-            >
+            <Box>
               <WrapperImg>
                 <img src={sponsor2} alt="Зображення до події" />
               </WrapperImg>
             </Box>
           </SwiperSlide>
           <SwiperSlide>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: { xs: "column-reverse", md: "row" },
-                gap: { xs: "24px", lg: "26px" },
-              }}
-            >
+            <Box>
               <WrapperImg>
                 <img src={sponsor3} alt="Зображення до події" />
               </WrapperImg>
             </Box>
           </SwiperSlide>
           <SwiperSlide>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: { xs: "column-reverse", md: "row" },
-                gap: { xs: "24px", lg: "26px" },
-              }}
-            >
+            <Box>
               <WrapperImg>
                 <img src={sponsor4} alt="Зображення до події" />
+              </WrapperImg>
+            </Box>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Box>
+              <WrapperImg>
+                <img src={sponsor5} alt="Зображення до події" />
+              </WrapperImg>
+            </Box>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Box>
+              <WrapperImg>
+                <img src={sponsor6} alt="Зображення до події" />
+              </WrapperImg>
+            </Box>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Box>
+              <WrapperImg>
+                <img src={sponsor7} alt="Зображення до події" />
               </WrapperImg>
             </Box>
           </SwiperSlide>

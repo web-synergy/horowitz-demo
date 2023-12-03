@@ -3,7 +3,7 @@ import logo from "../Header/logo.png";
 
 import { styled } from "@mui/system";
 
-const SocialIcon = styled(Box)(({ theme }) => ({
+const SocialIcon = styled(Box)(() => ({
   width: "36px",
   height: "36px",
   borderRadius: "50%",
