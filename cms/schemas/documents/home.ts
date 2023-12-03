@@ -28,6 +28,9 @@ export default defineType({
       name: 'banner',
       title: 'Баннер',
       type: 'object',
+      options: {
+        collapsible: true,
+      },
       fields: [
         defineField({
           name: 'title',
@@ -37,7 +40,22 @@ export default defineType({
         defineField({
           name: 'dateBegin',
           title: 'Дата Події',
-          type: 'internationalizedArrayString',
+          type: 'date',
+        }),
+        defineField({
+          name: 'img',
+          title: 'Фото',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            defineField({
+              name: 'caption',
+              title: 'Короткий опис зображення',
+              type: 'internationalizedArrayString',
+            }),
+          ],
         }),
       ],
     }),
@@ -53,6 +71,9 @@ export default defineType({
       name: 'quote',
       title: 'Змінити цитату',
       type: 'object',
+      options: {
+        collapsible: true,
+      },
       fields: [
         defineField({
           name: 'desc',
