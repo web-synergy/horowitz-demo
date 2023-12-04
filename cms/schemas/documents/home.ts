@@ -40,7 +40,7 @@ export default defineType({
         defineField({
           name: 'dateBegin',
           title: 'Дата Події',
-          type: 'date',
+          type: 'internationalizedArrayString',
         }),
         defineField({
           name: 'img',
@@ -49,6 +49,13 @@ export default defineType({
           options: {
             hotspot: true,
           },
+          fields: [
+            defineField({
+              name: 'caption',
+              title: 'Короткий опис зображення',
+              type: 'internationalizedArrayString',
+            }),
+          ],
         }),
       ],
     }),

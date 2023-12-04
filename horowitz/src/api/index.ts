@@ -10,7 +10,7 @@ export const getHomeData = async (language = 'ua') => {
          
       'banner':banner{
       'title':  title[_key =='${language}'].value,
-        dateBegin,
+       'dateBegin':dateBegin[_key =='${language}'].value,
        'img':img.asset ->url
 
       },
