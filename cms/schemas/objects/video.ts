@@ -8,7 +8,7 @@ export default defineType({
     defineField({
       name: 'title',
       title: 'Заголовок',
-      type: 'string',
+      type: 'internationalizedArrayString',
     }),
     defineField({
       name: 'link',
@@ -18,7 +18,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'title[0].value',
     },
     prepare: ({title}) => ({
       title: title,
