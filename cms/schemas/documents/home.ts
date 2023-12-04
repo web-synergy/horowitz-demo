@@ -40,7 +40,7 @@ export default defineType({
         defineField({
           name: 'dateBegin',
           title: 'Дата Події',
-          type: 'date',
+          type: 'internationalizedArrayString',
         }),
         defineField({
           name: 'img',

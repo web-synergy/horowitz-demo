@@ -12,7 +12,7 @@ export default defineType({
     defineField({
       name: 'champion',
       title: 'Отриманий титул',
-      type: 'internationalizedArrayText',
+      type: 'internationalizedArrayString',
     }),
     defineField({
       name: 'img',
@@ -21,13 +21,6 @@ export default defineType({
       options: {
         hotspot: true,
       },
-      fields: [
-        defineField({
-          name: 'alt',
-          title: 'Опис зображення',
-          type: 'internationalizedArrayString',
-        }),
-      ],
     }),
   ],
   preview: {

@@ -27,8 +27,8 @@ export default defineConfig({
 
     internationalizedArray({
       languages: [
-        {id: 'en', title: 'English'},
         {id: 'ua', title: 'Ukraine'},
+        {id: 'en', title: 'English'},
       ],
       defaultLanguages: ['ua'],
       buttonAddAll: false,

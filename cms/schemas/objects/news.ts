@@ -22,13 +22,6 @@ export default defineType({
       options: {
         hotspot: true,
       },
-      fields: [
-        defineField({
-          name: 'alt',
-          title: 'Опис зображення',
-          type: 'internationalizedArrayString',
-        }),
-      ],
     }),
   ],
   preview: {
