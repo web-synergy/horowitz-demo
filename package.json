@@ -6,6 +6,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "main": "cd horowitz && npm run dev",
-    "cms": "cd cms && npm run dev"
+    "cms": "cd cms && npm run dev",
+    "update-cms": "cd cms && npm install",
+    "update-main": "cd horowitz && npm install",
+    "build-cms": "cd cms &&npm run build",
+    "build-main": "cd horowitz && npm run build"
   }
 }
