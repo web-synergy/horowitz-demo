@@ -21,6 +21,7 @@ export default defineConfig({
             S.listItem()
               .title('Головна')
               .child(S.document().schemaType('home').documentId('home').title('Головна')),
+            S.documentTypeListItem('news'),
           ]),
     }),
     visionTool(),
@@ -32,7 +33,8 @@ export default defineConfig({
       ],
       defaultLanguages: ['ua'],
       buttonAddAll: false,
-      fieldTypes: ['string', 'text'],
+
+      fieldTypes: ['string', 'text', 'content'],
     }),
   ],
 

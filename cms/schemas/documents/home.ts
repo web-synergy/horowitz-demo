@@ -10,7 +10,7 @@ export default defineType({
       title: 'Спонсори',
     },
     {
-      name: 'allNews',
+      name: 'news',
       title: 'Новини',
     },
     {
@@ -38,7 +38,7 @@ export default defineType({
           type: 'internationalizedArrayString',
         }),
         defineField({
-          name: 'dateBegin',
+          name: 'dateEvent',
           title: 'Дата Події',
           type: 'internationalizedArrayString',
         }),
@@ -49,23 +49,28 @@ export default defineType({
           options: {
             hotspot: true,
           },
-          fields: [
-            defineField({
-              name: 'caption',
-              title: 'Короткий опис зображення',
-              type: 'internationalizedArrayString',
-            }),
-          ],
         }),
       ],
     }),
 
     defineField({
-      group: ['allNews'],
-      name: 'allNews',
+      group: ['news'],
+      name: 'news',
       title: 'Новини',
       type: 'array',
-      of: [{type: 'news'}],
+      validation: (Rule) => [
+        Rule.unique().error('Ця новина вже є в списку'),
+        Rule.length(3).error('Допускається 3 новини'),
+      ],
+
+      options: {},
+      of: [
+        defineField({
+          name: 'news',
+          type: 'reference',
+          to: [{type: 'news'}],
+        }),
+      ],
     }),
     defineField({
       name: 'quote',
@@ -76,7 +81,7 @@ export default defineType({
       },
       fields: [
         defineField({
-          name: 'desc',
+          name: 'quote',
           title: 'Цитата',
           type: 'internationalizedArrayText',
         }),
