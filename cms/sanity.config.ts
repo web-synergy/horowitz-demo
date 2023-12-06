@@ -4,7 +4,6 @@ import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 import {internationalizedArray} from 'sanity-plugin-internationalized-array'
-import {content} from './schemas/objects/content'
 
 export default defineConfig({
   name: 'default',
