@@ -1,16 +1,16 @@
 import { client } from '../lib/client';
 
 export const getHomeData = async (language = 'ua') => {
-  return await client.fetch(`*[_type == 'home'][1]{
+  return await client.fetch(`*[_type == 'home'][0]{
 
     'quote':quote{
        'author': author[_key =='${language}'].value,
-         'desc':desc[_key =='${language}'].value,
+         'quote':quote[_key =='${language}'].value,
      },
          
       'banner':banner{
       'title':  title[_key =='${language}'].value,
-       'dateBegin':dateBegin[_key =='${language}'].value,
+       'dateEvent':dateEvent[_key =='${language}'].value,
        'img':img.asset ->url
 
       },
@@ -20,10 +20,10 @@ export const getHomeData = async (language = 'ua') => {
       'img':img.asset ->url
 
     },
-    'allNews':allNews[]{
+    'news':news[]->{
       'description':description[_key =='${language}'].value,
-      'titleNews':titleNews[_key =='${language}'].value,
-      'imgSrcNew':imgSrcNew.asset->url
+      'title':title[_key =='${language}'].value,
+      'img':img.asset->url
 
     },
     sponsors,

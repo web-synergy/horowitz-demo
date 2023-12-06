@@ -6,11 +6,13 @@ import { Box } from '@mui/material';
 import { useHomeData } from '../../store';
 
 import { urlFor } from '../../lib/client';
+import { PortableText } from '@portabletext/react';
 
 const NewsSection = () => {
-  const { allNews } = useHomeData(state => ({
-    allNews: state.allNews,
+  const { news } = useHomeData(state => ({
+    news: state.news,
   }));
+
   return (
     <Box component='section' sx={{ padding: '120px 0' }}>
       <Container>
@@ -46,11 +48,11 @@ const NewsSection = () => {
             alignItems: 'center',
           }}>
           {/* Карточка новини 1 */}
-          {allNews &&
-            allNews.map((item, index) => (
+          {news &&
+            news.map((item, index) => (
               <Box key={index} sx={{ width: '356px' }}>
                 <img
-                  src={urlFor(item.imgSrcNew)
+                  src={urlFor(item.img)
                     .auto('format')
                     .fit('scale')
                     .url()
@@ -73,7 +75,7 @@ const NewsSection = () => {
                     lineHeight: 'normal',
                     textTransform: 'uppercase',
                   }}>
-                  {item.titleNews}
+                  {item.title}
                 </Typography>
                 <Typography
                   variant='body2'
@@ -84,7 +86,7 @@ const NewsSection = () => {
                     lineHeight: 'normal',
                     textTransform: 'uppercase',
                   }}>
-                  {item.description}
+                  <PortableText value={item.description[0]} />
                 </Typography>
               </Box>
             ))}

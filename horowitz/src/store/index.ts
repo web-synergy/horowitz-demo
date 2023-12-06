@@ -3,7 +3,7 @@ import { getHomeData } from '../api';
 
 interface IHomeData {
   banner: any;
-  allNews: any[];
+  news: any[];
   sponsors: any[];
   winner: any[];
   video: any[];
@@ -15,7 +15,7 @@ interface IHomeData {
 
 export const useHomeData = create<IHomeData>(set => ({
   banner: {},
-  allNews: [],
+  news: [],
   sponsors: [],
   winner: [],
   video: [],
@@ -27,9 +27,10 @@ export const useHomeData = create<IHomeData>(set => ({
     set({ loading: true });
     try {
       const response = await getHomeData(language);
+      console.log(response);
       set({
         banner: response.banner,
-        allNews: response.allNews,
+        news: response.news,
         quote: response.quote,
         winner: response.winner,
         video: response.videos,

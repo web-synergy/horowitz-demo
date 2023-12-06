@@ -4,6 +4,7 @@ import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 import {internationalizedArray} from 'sanity-plugin-internationalized-array'
+import {content} from './schemas/objects/content'
 
 export default defineConfig({
   name: 'default',
@@ -21,6 +22,7 @@ export default defineConfig({
             S.listItem()
               .title('Головна')
               .child(S.document().schemaType('home').documentId('home').title('Головна')),
+            S.documentTypeListItem('news'),
           ]),
     }),
     visionTool(),
@@ -32,7 +34,8 @@ export default defineConfig({
       ],
       defaultLanguages: ['ua'],
       buttonAddAll: false,
-      fieldTypes: ['string', 'text'],
+
+      fieldTypes: ['string', 'text', 'content'],
     }),
   ],
 
