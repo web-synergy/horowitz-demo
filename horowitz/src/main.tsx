@@ -1,16 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { ThemeProvider } from "@emotion/react";
-import App from "./App.tsx";
-import { theme } from "./theme";
-import { CssBaseline } from "@mui/material";
-import "./index.css";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { ThemeProvider } from '@emotion/react';
+import { theme } from './theme';
+import { CssBaseline } from '@mui/material';
+import './index.css';
+import routes from './assets/routes';
+import { RouterProvider } from 'react-router-dom';
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <App />
+      <RouterProvider router={routes} />
     </ThemeProvider>
   </React.StrictMode>
 );

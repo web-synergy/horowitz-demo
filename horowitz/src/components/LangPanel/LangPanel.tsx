@@ -1,4 +1,4 @@
-import { FC, useState, ChangeEvent, useEffect } from 'react';
+import { FC, ChangeEvent, useEffect } from 'react';
 import {
   FormControl,
   RadioGroup,
@@ -9,8 +9,7 @@ import {
   styled,
 } from '@mui/material';
 import { useHomeData } from '../../store';
-
-const localStorageKey = 'locale';
+import { useLangData } from '../../store';
 
 type Language = 'ua' | 'en';
 const languages = ['ua', 'en'];
@@ -24,15 +23,14 @@ const StyledFormControlLabel = styled((props: StyledFormControlLabelProps) => (
 ))(({ theme, checked }) => ({
   margin: 0,
   '.MuiTypography-root': {
-    fontFamily: 'Kyiv Type',
     fontSize: '18px',
     fontWeight: 350,
     textTransform: 'uppercase;',
+    color: 'rgba(186, 186, 186, 0.3)',
   },
 
   '.MuiFormControlLabel-label': checked && {
-    color: theme.palette.primary.main,
-    fontFamily: 'Kyiv Type',
+    color: theme.palette.text.secondary,
     fontSize: '18px',
     fontWeight: 500,
   },
@@ -43,12 +41,10 @@ interface LangPanelProps {
 }
 
 const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
-  const [lang, setLang] = useState<Language>(() => {
-    const value = localStorage.getItem(localStorageKey);
-    return value ? (value as Language) : (languages[0] as Language);
-  });
+  const { lang, setLang } = useLangData();
   const { getData } = useHomeData();
 
+  //ToDo: make a request only if you are in the main page
   useEffect(() => {
     getData(lang);
   }, [getData, lang]);
@@ -56,7 +52,6 @@ const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
   const onChangeLang = (event: ChangeEvent<HTMLInputElement>) => {
     const value = (event.target as HTMLInputElement).value as Language;
     setLang(value);
-    localStorage.setItem(localStorageKey, value);
 
     if (additionalClickFn) {
       additionalClickFn();
@@ -64,7 +59,7 @@ const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
   };
 
   return (
-    <FormControl sx={{ ml: { xs: 0, lg: '154.5px' } }}>
+    <FormControl>
       <RadioGroup
         aria-label="language-panel"
         name="language"

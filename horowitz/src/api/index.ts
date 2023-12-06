@@ -1,7 +1,7 @@
 import { client } from '../lib/client';
 
 export const getHomeData = async (language = 'ua') => {
-  return await client.fetch(`*[_type == 'home'][1]{
+  return await client.fetch(`*[_type == 'home'][0]{
 
     'quote':quote{
        'author': author[_key =='${language}'].value,
