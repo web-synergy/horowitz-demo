@@ -40,7 +40,7 @@ const QuotSection = () => {
             lineHeight: '60px',
             textTransform: 'uppercase',
           }}>
-          {quote.desc}
+          {quote.quote}
         </Typography>
         <Typography
           variant='h4'

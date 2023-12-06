@@ -3,20 +3,26 @@ import {defineField, defineType} from 'sanity'
 export default defineType({
   name: 'news',
   title: 'Новини',
-  type: 'object',
+  type: 'document',
   fields: [
     defineField({
-      name: 'titleNews',
+      name: 'title',
       title: 'Заголовок',
       type: 'internationalizedArrayString',
     }),
     defineField({
-      name: 'description',
-      title: 'Опис новини',
-      type: 'internationalizedArrayText',
+      name: 'slug',
+      type: 'slug',
+      options: {source: 'title[1].value'},
     }),
     defineField({
-      name: 'imgSrcNew',
+      name: 'description',
+      title: 'Опис новини',
+      type: 'internationalizedArrayContent',
+    }),
+
+    defineField({
+      name: 'img',
       title: 'Додати зображення',
       type: 'image',
       options: {
@@ -26,12 +32,14 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'titleNews[0].value',
-      img: 'imgSrcNew',
+      title: 'title',
+      img: 'img',
     },
-    prepare: ({title, img}) => ({
-      title: title,
-      media: img,
-    }),
+    prepare: ({title, img}) => {
+      return {
+        title: title[0].value,
+        media: img,
+      }
+    },
   },
 })
