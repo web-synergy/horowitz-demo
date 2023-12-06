@@ -46,6 +46,7 @@ const NewsSection = () => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
+            gap: 3,
           }}>
           {/* Карточка новини 1 */}
           {news &&

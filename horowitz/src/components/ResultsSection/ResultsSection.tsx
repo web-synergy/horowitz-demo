@@ -8,21 +8,22 @@ import { useHomeData } from '../../store';
 // import video3 from "./video3.mp4";
 
 const ResultsSection = () => {
-  const { video } = useHomeData(state => ({
+  const { video } = useHomeData((state) => ({
     video: state.video,
   }));
   // console.log(video[0].link);
   return (
-    <Box component='section' sx={{ padding: '120px 0' }}>
+    <Box component="section" sx={{ padding: '120px 0' }}>
       <Container
         sx={{
           backgroundColor: '#FFFFFF',
           paddingTop: '50px',
           paddingBottom: '50px',
-        }}>
+        }}
+      >
         <Typography
-          variant='h4'
-          align='center'
+          variant="h4"
+          align="center"
           sx={{
             position: 'relative',
             marginBottom: '66px',
@@ -30,7 +31,8 @@ const ResultsSection = () => {
             fontSize: '32px',
             fontWeight: 600,
             lineHeight: 'normal',
-          }}>
+          }}
+        >
           Дивитись онлайн
           <span
             style={{
@@ -51,12 +53,14 @@ const ResultsSection = () => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-          }}>
+            gap: 3,
+          }}
+        >
           {/* Карточка новости 1 */}
 
           {video &&
             video.map((item, index) => (
-              <Box key={index} sx={{ width: '356px' }}>
+              <Box key={index}>
                 <Box sx={{ textAlign: 'start' }}>
                   {/* <video
                 src="https://www.example.com/path-to-your-video/video.mp4"
@@ -74,21 +78,23 @@ const ResultsSection = () => {
                       border: 'none',
                       borderRadius: '4px',
                     }}
-                    width='356'
-                    height='198'
+                    width="356"
+                    height="198"
                     src={item?.link}
-                    title='YouTube video player'
-                    allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                    allowFullScreen></iframe>
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
                   <Typography
-                    variant='h6'
+                    variant="h6"
                     sx={{
                       marginTop: '20px',
                       fontSize: '20px',
                       fontWeight: 600,
                       lineHeight: 'normal',
                       textTransform: 'uppercase',
-                    }}>
+                    }}
+                  >
                     {item.title}
                   </Typography>
                 </Box>
@@ -100,9 +106,10 @@ const ResultsSection = () => {
             marginTop: '56px',
             display: 'flex',
             justifyContent: 'center',
-          }}>
+          }}
+        >
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={{
               fontSize: '18px',
               fontWeight: 400,
@@ -114,7 +121,8 @@ const ResultsSection = () => {
               textTransform: 'none',
               borderRadius: '24px',
               border: '1.5px solid #131333',
-            }}>
+            }}
+          >
             Дивитись всі відео
           </Button>
         </Box>
