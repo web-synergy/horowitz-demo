@@ -11,8 +11,5 @@
     "update-main": "cd horowitz && npm install",
     "build-cms": "cd cms &&npm run build",
     "build-main": "cd horowitz && npm run build"
-  },
-  "dependencies": {
-    "i18next-browser-languagedetector": "^7.2.0"
   }
 }
