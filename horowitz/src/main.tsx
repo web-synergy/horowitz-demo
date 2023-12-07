@@ -4,8 +4,9 @@ import { ThemeProvider } from '@emotion/react';
 import { theme } from './theme';
 import { CssBaseline } from '@mui/material';
 import './index.css';
-import routes from './assets/routes';
+import routes from './config/routes';
 import { RouterProvider } from 'react-router-dom';
+import './config/i18n';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

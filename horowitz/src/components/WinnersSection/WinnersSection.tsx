@@ -4,17 +4,20 @@ import Button from '@mui/material/Button';
 import { Box } from '@mui/material';
 import { useHomeData } from '../../store';
 import { urlFor } from '../../lib/client';
+import { useTranslation } from 'react-i18next';
 
 const WinnersSection = () => {
-  const { winner } = useHomeData(state => ({
+  const { winner } = useHomeData((state) => ({
     winner: state.winner,
   }));
+  const { t } = useTranslation();
+
   return (
-    <Box component='section' sx={{ padding: ' 120px 0 0 0' }}>
+    <Box component="section" sx={{ padding: ' 120px 0 0 0' }}>
       <Container>
         <Typography
-          variant='h4'
-          align='center'
+          variant="h4"
+          align="center"
           sx={{
             position: 'relative',
             marginBottom: '66px',
@@ -22,8 +25,9 @@ const WinnersSection = () => {
             fontSize: '32px',
             fontWeight: 600,
             lineHeight: 'normal',
-          }}>
-          Переможці 2023
+          }}
+        >
+          {t('main.winnerTitle')}
           <span
             style={{
               position: 'absolute',
@@ -44,7 +48,8 @@ const WinnersSection = () => {
             justifyContent: 'center',
             alignItems: 'center',
             gap: '72px',
-          }}>
+          }}
+        >
           {/* Карточка переможця 1 */}
           {winner &&
             winner.map((item, index) => (
@@ -55,7 +60,7 @@ const WinnersSection = () => {
                     .fit('scale')
                     .url()
                     .toString()}
-                  alt='winner1'
+                  alt="winner1"
                   style={{
                     width: '260px',
                     height: '260px',
@@ -65,24 +70,26 @@ const WinnersSection = () => {
                   }}
                 />
                 <Typography
-                  variant='h6'
+                  variant="h6"
                   sx={{
                     marginTop: '24px',
                     marginBottom: '8px',
                     fontSize: '22px',
                     fontWeight: 700,
                     lineHeight: 'normal',
-                  }}>
+                  }}
+                >
                   {item.name}
                 </Typography>
                 <Typography
-                  variant='body2'
+                  variant="body2"
                   sx={{
                     color: '#827E7E',
                     fontSize: '18px',
                     fontWeight: 600,
                     lineHeight: 'normal',
-                  }}>
+                  }}
+                >
                   {item.champion}
                 </Typography>
               </Box>
@@ -93,9 +100,10 @@ const WinnersSection = () => {
             marginTop: '56px',
             display: 'flex',
             justifyContent: 'center',
-          }}>
+          }}
+        >
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={{
               fontSize: '18px',
               fontWeight: 400,
@@ -107,8 +115,9 @@ const WinnersSection = () => {
               textTransform: 'none',
               borderRadius: '24px',
               border: '1.5px solid #131333',
-            }}>
-            Переглянути всіх учасників
+            }}
+          >
+            {t('main.winnerBtn')}
           </Button>
         </Box>
       </Container>

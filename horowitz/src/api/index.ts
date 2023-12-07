@@ -1,7 +1,7 @@
 import { client } from '../lib/client';
 
 export const getHomeData = async (language = 'ua') => {
-  return await client.fetch(`*[_type == 'home'][0]{
+  return client.fetch(`*[_type == 'home'][0]{
 
     'quote':quote{
        'author': author[_key =='${language}'].value,
@@ -32,4 +32,20 @@ export const getHomeData = async (language = 'ua') => {
       link
     },
 }`);
+};
+
+interface INews {
+  _id: string;
+  slug: string;
+  title: string;
+  description: string;
+  img: string;
+}
+export const getNews = async (lang: string) => {
+  return client.fetch<INews>(`*[_type=='news']{
+    _id, slug,
+    'description':description[_key =='${lang}'].value,
+    'title':title[_key =='${lang}'].value,
+    'img':img.asset->url
+  }`);
 };

@@ -12,12 +12,13 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom';
-import { main } from '../../assets/navigation';
-import { useLangData } from '../../store';
+import { useTranslation } from 'react-i18next';
+import { main } from '../../config/navigation';
 
 const Link = styled(RouterLink)({
   textDecoration: 'none',
   color: 'inherit',
+  fontSize: 18,
 });
 
 interface NavigationListProps {
@@ -25,23 +26,24 @@ interface NavigationListProps {
 }
 
 const NavigationList: FC<NavigationListProps> = ({ onClick }) => {
-  const { lang } = useLangData();
+  const { t } = useTranslation();
 
   return (
     <MenuList
       sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' } }}
     >
-      {main.map((nav) => (
-        <MenuItem
-          key={nav.href}
-          onClick={onClick}
-          sx={{ '&:hover': { color: (theme) => theme.palette.primary.main } }}
-        >
-          <Link to={nav.href}>
-            {lang === 'ua' ? nav.title.ua : nav.title.en}
-          </Link>
-        </MenuItem>
-      ))}
+      {main.map((nav) => {
+        const title = t(`navigation.${nav.title}`);
+        return (
+          <MenuItem
+            key={nav.href}
+            onClick={onClick}
+            sx={{ '&:hover': { color: (theme) => theme.palette.primary.main } }}
+          >
+            <Link to={nav.href}>{title}</Link>
+          </MenuItem>
+        );
+      })}
     </MenuList>
   );
 };
@@ -58,8 +60,6 @@ const Navigation = () => {
       onCloseMenu();
     }
   };
-
-  console.log(isDesktop);
 
   useEffect(() => {
     if (isDesktop && open) {

@@ -10,7 +10,6 @@ const SharedLayout = () => {
       <Stack component="main" minHeight="100%" flex="1 1 auto">
         <Outlet />
       </Stack>
-
       <Footer />
     </Stack>
   );

@@ -1,4 +1,4 @@
-import { FC, ChangeEvent, useEffect } from 'react';
+import { FC, ChangeEvent } from 'react';
 import {
   FormControl,
   RadioGroup,
@@ -8,10 +8,8 @@ import {
   Divider,
   styled,
 } from '@mui/material';
-import { useHomeData } from '../../store';
-import { useLangData } from '../../store';
+import { useTranslation } from 'react-i18next';
 
-type Language = 'ua' | 'en';
 const languages = ['ua', 'en'];
 
 interface StyledFormControlLabelProps extends FormControlLabelProps {
@@ -41,17 +39,13 @@ interface LangPanelProps {
 }
 
 const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
-  const { lang, setLang } = useLangData();
-  const { getData } = useHomeData();
-
-  //ToDo: make a request only if you are in the main page
-  useEffect(() => {
-    getData(lang);
-  }, [getData, lang]);
+  const {
+    i18n: { language, changeLanguage },
+  } = useTranslation();
 
   const onChangeLang = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = (event.target as HTMLInputElement).value as Language;
-    setLang(value);
+    const value = (event.target as HTMLInputElement).value;
+    changeLanguage(value);
 
     if (additionalClickFn) {
       additionalClickFn();
@@ -63,7 +57,7 @@ const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
       <RadioGroup
         aria-label="language-panel"
         name="language"
-        value={lang}
+        value={language}
         onChange={onChangeLang}
         row
       >
@@ -71,7 +65,7 @@ const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
           value={languages[0]}
           control={<Radio sx={{ display: 'none' }} />}
           label={languages[0]}
-          checked={languages[0] === lang}
+          checked={languages[0] === language}
           key={languages[0]}
           aria-label={`Вибрати українську`}
         />
@@ -81,7 +75,7 @@ const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
           value={languages[1]}
           control={<Radio sx={{ display: 'none' }} />}
           label={languages[1]}
-          checked={languages[1] === lang}
+          checked={languages[1] === language}
           key={languages[1]}
           aria-label={`Вибрати англійську`}
           sx={{ cursor: 'default' }}
