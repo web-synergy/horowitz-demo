@@ -1,0 +1,22 @@
+{
+  "navigation": {
+    "about": "About us",
+    "history": "Our history",
+    "projects": "Our projects",
+    "news": "News",
+    "contacts": "Contacts"
+  },
+  "main": {
+    "submitApp": "Submit an application",
+    "supportProject": "Support the project",
+    "newsTitle": "News",
+    "newsBtn": "Read all news",
+    "winnerTitle": "Winners 2023",
+    "winnerBtn": "View all participants",
+    "watchTitle": "Watch online",
+    "watchBtn": "See all videos",
+    "partnersTitle": "Partners and Sponsors",
+    "partnersBtn": "See all"
+  },
+  "stub": "Sorry, the page is under construction"
+}

@@ -1,14 +1,10 @@
-// import { useEffect } from 'react';
-
 import { Box, Button, Typography } from '@mui/material';
-
 import { useHomeData } from '../../store';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
-  const { banner } = useHomeData((state) => ({
-    getData: state.getData,
-    banner: state.banner,
-  }));
+  const { banner } = useHomeData();
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -46,7 +42,7 @@ const Hero = () => {
                 lineHeight: 'normal',
               }}
             >
-              {banner.dateBegin}
+              {banner.dateEvent}
             </Typography>
             <Typography
               variant="h2"
@@ -75,7 +71,7 @@ const Hero = () => {
                   lineHeight: 'normal',
                   width: '214px',
                   height: '56px',
-                  padding: '10px 20px',
+                  padding: '10px',
                   marginRight: '16px',
                   color: '#131333',
                   backgroundColor: '#F2F2F2',
@@ -83,7 +79,7 @@ const Hero = () => {
                   borderRadius: '2px',
                 }}
               >
-                Подати заявку
+                {t('main.submitApp')}
               </Button>
               <Button
                 variant="outlined"
@@ -101,7 +97,7 @@ const Hero = () => {
                   border: ' 1.5px solid #F2F2F2',
                 }}
               >
-                Підтримати проєкт
+                {t('main.supportProject')}
               </Button>
             </Box>
           </Box>

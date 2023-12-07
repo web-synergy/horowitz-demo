@@ -1,4 +1,4 @@
-import { FC, useState, ChangeEvent, useEffect } from 'react';
+import { FC, ChangeEvent } from 'react';
 import {
   FormControl,
   RadioGroup,
@@ -8,11 +8,8 @@ import {
   Divider,
   styled,
 } from '@mui/material';
-import { useHomeData } from '../../store';
+import { useTranslation } from 'react-i18next';
 
-const localStorageKey = 'locale';
-
-type Language = 'ua' | 'en';
 const languages = ['ua', 'en'];
 
 interface StyledFormControlLabelProps extends FormControlLabelProps {
@@ -24,15 +21,14 @@ const StyledFormControlLabel = styled((props: StyledFormControlLabelProps) => (
 ))(({ theme, checked }) => ({
   margin: 0,
   '.MuiTypography-root': {
-    fontFamily: 'Kyiv Type',
     fontSize: '18px',
     fontWeight: 350,
     textTransform: 'uppercase;',
+    color: 'rgba(186, 186, 186, 0.3)',
   },
 
   '.MuiFormControlLabel-label': checked && {
-    color: theme.palette.primary.main,
-    fontFamily: 'Kyiv Type',
+    color: theme.palette.text.secondary,
     fontSize: '18px',
     fontWeight: 500,
   },
@@ -43,20 +39,13 @@ interface LangPanelProps {
 }
 
 const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
-  const [lang, setLang] = useState<Language>(() => {
-    const value = localStorage.getItem(localStorageKey);
-    return value ? (value as Language) : (languages[0] as Language);
-  });
-  const { getData } = useHomeData();
-
-  useEffect(() => {
-    getData(lang);
-  }, [getData, lang]);
+  const {
+    i18n: { language, changeLanguage },
+  } = useTranslation();
 
   const onChangeLang = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = (event.target as HTMLInputElement).value as Language;
-    setLang(value);
-    localStorage.setItem(localStorageKey, value);
+    const value = (event.target as HTMLInputElement).value;
+    changeLanguage(value);
 
     if (additionalClickFn) {
       additionalClickFn();
@@ -64,11 +53,11 @@ const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
   };
 
   return (
-    <FormControl sx={{ ml: { xs: 0, lg: '154.5px' } }}>
+    <FormControl>
       <RadioGroup
         aria-label="language-panel"
         name="language"
-        value={lang}
+        value={language}
         onChange={onChangeLang}
         row
       >
@@ -76,7 +65,7 @@ const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
           value={languages[0]}
           control={<Radio sx={{ display: 'none' }} />}
           label={languages[0]}
-          checked={languages[0] === lang}
+          checked={languages[0] === language}
           key={languages[0]}
           aria-label={`Вибрати українську`}
         />
@@ -86,7 +75,7 @@ const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
           value={languages[1]}
           control={<Radio sx={{ display: 'none' }} />}
           label={languages[1]}
-          checked={languages[1] === lang}
+          checked={languages[1] === language}
           key={languages[1]}
           aria-label={`Вибрати англійську`}
           sx={{ cursor: 'default' }}

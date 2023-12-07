@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useTranslation } from 'react-i18next';
 import { WrapperImg } from './styles';
 
 // Import Swiper styles
@@ -16,28 +17,31 @@ import { useHomeData } from '../../store';
 import { urlFor } from '../../lib/client';
 
 const SponsorCarousel = () => {
-  const { sponsors } = useHomeData(state => ({
+  const { sponsors } = useHomeData((state) => ({
     sponsors: state.sponsors,
   }));
+  const { t } = useTranslation();
+
   return (
-    <Box component='section' sx={{ padding: '76px 0 160px 0' }}>
+    <Box component="section" sx={{ padding: '76px 0 160px 0' }}>
       <Box
         sx={{
           margin: '0 auto',
           maxWidth: '1280px',
-          backgroundColor: '#FFFFFF',
-        }}>
+        }}
+      >
         <Typography
-          variant='h4'
-          align='center'
+          variant="h4"
+          align="center"
           sx={{
             position: 'relative',
             marginBottom: '66px',
             fontSize: '32px',
             fontWeight: 600,
             lineHeight: 'normal',
-          }}>
-          Партнери та Спонсори
+          }}
+        >
+          {t('main.partnersTitle')}
           <span
             style={{
               position: 'absolute',
@@ -64,12 +68,13 @@ const SponsorCarousel = () => {
             disableOnInteraction: false,
           }}
           modules={[Autoplay]}
-          className='mySwiper'>
+          className="mySwiper"
+        >
           {sponsors &&
             sponsors.map((item, index) => (
               <SwiperSlide key={index}>
                 <Box>
-                  <a target='_blank' href={item.link}>
+                  <a target="_blank" href={item.link}>
                     <WrapperImg>
                       <img
                         src={urlFor(item.img)
@@ -91,9 +96,10 @@ const SponsorCarousel = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-          }}>
+          }}
+        >
           <Button
-            variant='outlined'
+            variant="outlined"
             sx={{
               fontSize: '18px',
               fontWeight: 400,
@@ -105,8 +111,9 @@ const SponsorCarousel = () => {
               textTransform: 'none',
               borderRadius: '24px',
               border: '1.5px solid #131333',
-            }}>
-            Дивитись усіх
+            }}
+          >
+            {t('main.partnersBtn')}
           </Button>
         </Box>
       </Box>

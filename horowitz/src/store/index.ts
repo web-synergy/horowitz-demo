@@ -13,7 +13,7 @@ interface IHomeData {
   getData: (language: string) => Promise<void>;
 }
 
-export const useHomeData = create<IHomeData>(set => ({
+export const useHomeData = create<IHomeData>((set) => ({
   banner: {},
   news: [],
   sponsors: [],
@@ -23,11 +23,10 @@ export const useHomeData = create<IHomeData>(set => ({
   loading: false,
   error: '',
 
-  getData: async language => {
+  getData: async (language) => {
     set({ loading: true });
     try {
       const response = await getHomeData(language);
-      console.log(response);
       set({
         banner: response.banner,
         news: response.news,

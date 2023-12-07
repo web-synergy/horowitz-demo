@@ -4,12 +4,14 @@ import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 import {internationalizedArray} from 'sanity-plugin-internationalized-array'
+import {projectId} from './environment'
+import {languages} from './language'
 
 export default defineConfig({
   name: 'default',
   title: 'horowitz-demo',
 
-  projectId: 'qq832t9b',
+  projectId: projectId,
   dataset: 'production',
 
   plugins: [
@@ -27,11 +29,8 @@ export default defineConfig({
     visionTool(),
 
     internationalizedArray({
-      languages: [
-        {id: 'ua', title: 'Ukraine'},
-        {id: 'en', title: 'English'},
-      ],
-      defaultLanguages: ['ua'],
+      languages: languages,
+      defaultLanguages: [languages[0].id],
       buttonAddAll: false,
 
       fieldTypes: ['string', 'text', 'content'],

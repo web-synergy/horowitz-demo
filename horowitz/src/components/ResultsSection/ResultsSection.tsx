@@ -3,20 +3,18 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Box } from '@mui/material';
 import { useHomeData } from '../../store';
-// import video1 from "./video1.mp4";
-// import video2 from "./video2.mp4";
-// import video3 from "./video3.mp4";
+import { useTranslation } from 'react-i18next';
 
 const ResultsSection = () => {
   const { video } = useHomeData((state) => ({
     video: state.video,
   }));
-  // console.log(video[0].link);
+  const { t } = useTranslation();
+
   return (
     <Box component="section" sx={{ padding: '120px 0' }}>
       <Container
         sx={{
-          backgroundColor: '#FFFFFF',
           paddingTop: '50px',
           paddingBottom: '50px',
         }}
@@ -33,7 +31,7 @@ const ResultsSection = () => {
             lineHeight: 'normal',
           }}
         >
-          Дивитись онлайн
+          {t('main.watchTitle')}
           <span
             style={{
               position: 'absolute',
@@ -123,7 +121,7 @@ const ResultsSection = () => {
               border: '1.5px solid #131333',
             }}
           >
-            Дивитись всі відео
+            {t('main.watchBtn')}
           </Button>
         </Box>
       </Container>

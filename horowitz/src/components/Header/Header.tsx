@@ -1,73 +1,89 @@
-import AppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import MenuIcon from '@mui/icons-material/Menu';
-import logo from './logo.png';
-import { Box, Container } from '@mui/material';
+
+import {
+  AppBar,
+  Box,
+  Container,
+  Stack,
+  Typography,
+  IconButton,
+  Toolbar,
+  useTheme,
+  useMediaQuery,
+} from '@mui/material';
+import { Link } from 'react-router-dom';
 import LangPanel from '../LangPanel/LangPanel';
+import Navigation from './Navigation';
+import logo from './logo.png';
 
 const Header = () => {
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+
   return (
-    <AppBar
-      component="header"
-      position="absolute"
-      sx={{ background: 'transparent', boxShadow: 'none' }}
-    >
-      <Container>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingTop: '30px',
-          }}
-        >
-          <Box style={{ display: 'flex', alignItems: 'center' }}>
-            <img
-              src={logo}
-              alt="Логотип"
-              style={{ width: '200px', height: '100%', marginRight: '26px' }}
-            />
-            <Typography
-              variant="h6"
-              sx={{
-                width: '92px',
-                fontSize: '18px',
-                fontWeight: 400,
-                lineHeight: 'normal',
-              }}
+    <>
+      <AppBar
+        component="header"
+        position="fixed"
+        sx={{
+          backgroundColor: (theme) => theme.palette.gray.main,
+          boxShadow: 'none',
+          color: (theme) => theme.palette.text.secondary,
+          pb: 3,
+        }}
+      >
+        <Toolbar>
+          <Container>
+            <Stack
+              py={2}
+              alignItems="center"
+              sx={{ color: (theme) => theme.palette.gray.light }}
             >
-              Member of WFIMC EMCY
-            </Typography>
-          </Box>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Typography
-              variant="body1"
-              sx={{
-                marginRight: '16px',
-                fontSize: '18px',
-              }}
+              <Typography>Member of WFIMC & EMCY</Typography>
+            </Stack>
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
             >
-              Пошук
-            </Typography>
-            <IconButton
-              color="inherit"
-              sx={{ padding: 0, marginRight: '40px' }}
-            >
-              <SearchIcon />
-            </IconButton>
-            <LangPanel />
-            <Typography variant="body1" sx={{ mx: '16px', fontSize: '18px' }}>
-              Меню
-            </Typography>
-            <IconButton color="inherit" sx={{ padding: 0 }}>
-              <MenuIcon />
-            </IconButton>
-          </div>
-        </Box>
-      </Container>
-    </AppBar>
+              <Link to="/" style={{ fontSize: 0 }}>
+                <Box
+                  component={'img'}
+                  src={logo}
+                  alt="Логотип"
+                  sx={{
+                    width: '200px',
+                    height: 'auto',
+                    marginRight: { xs: 4, md: 6 },
+                  }}
+                />
+              </Link>
+              <Stack direction={isDesktop ? 'row' : 'row-reverse'}>
+                <Navigation />
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  gap={3}
+                  mr={{ xs: 6, lg: 0 }}
+                  ml={{ xs: 0, lg: 6 }}
+                >
+                  <IconButton color="inherit">
+                    <SearchIcon />
+                  </IconButton>
+                  <LangPanel />
+                </Stack>
+              </Stack>
+            </Stack>
+          </Container>
+        </Toolbar>
+      </AppBar>
+      <Box
+        sx={
+          isDesktop ? { ...theme.header.desktop } : { ...theme.header.desktop }
+        }
+      />
+      <Box />
+    </>
   );
 };
 

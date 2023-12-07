@@ -1,8 +1,10 @@
-import { createTheme } from "@mui/material";
-import { components } from "./components";
-import { breakpoints } from "./breakpoints";
+import { createTheme } from '@mui/material';
+import { components } from './components';
+import { breakpoints } from './breakpoints';
+import { palette } from './palette';
+import { typography } from './typography';
 
-declare module "@mui/material/styles" {
+declare module '@mui/material/styles' {
   interface Theme {
     header: {
       mobile: { minHeight: number };
@@ -19,11 +21,13 @@ declare module "@mui/material/styles" {
 
 export const theme = createTheme({
   breakpoints,
+  palette,
   components,
+  typography,
   header: {
     mobile: { minHeight: 112 },
     desktop: {
-      minHeight: 221,
+      minHeight: 166,
     },
   },
 });
