@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import SharedLayout from '../components/SharedLayout/SharedLayout';
 import MainPage from '../components/MainPage/MainPage';
 import News from '../components/News/News';
-import Sub from '../components/Stub/Stub';
+import Stub from '../components/Stub/Stub';
 
 const routes = createBrowserRouter([
   {
@@ -15,15 +15,15 @@ const routes = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <Sub title="about" />,
+        element: <Stub />,
       },
       {
         path: '/history',
-        element: <Sub title="history" />,
+        element: <Stub />,
       },
       {
         path: '/projects',
-        element: <Sub title="projects" />,
+        element: <Stub />,
       },
       {
         path: '/news',
@@ -31,11 +31,11 @@ const routes = createBrowserRouter([
       },
       {
         path: '/contacts',
-        element: <Sub title="contacts" />,
+        element: <Stub />,
       },
       {
         path: '/sponsors',
-        element: <Sub title="sponsors" />,
+        element: <Stub />,
       },
     ],
   },
