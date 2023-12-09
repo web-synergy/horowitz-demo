@@ -20,7 +20,6 @@ const SponsorCarousel = () => {
   const { sponsors } = useHomeData((state) => ({
     sponsors: state.sponsors,
   }));
-  console.log(sponsors);
   const { t } = useTranslation();
 
   return (
