@@ -6,10 +6,11 @@ export const WrapperImg = styled(Box)(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  // overflow: "hidden",
+  overflow: "hidden",
   "& img": {
     width: "100%",
     height: "auto",
+    maxHeight: "150px",
     objectFit: "cover",
   },
 }));

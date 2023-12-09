@@ -23,9 +23,6 @@ const SponsorCarousel = () => {
   console.log(sponsors);
   const { t } = useTranslation();
 
-  // const visionSlides = sponsors.concat(sponsors);
-  // console.log(visionSlides);
-
   return (
     <Box component="section" sx={{ padding: "76px 0 160px 0" }}>
       <Box
@@ -60,21 +57,21 @@ const SponsorCarousel = () => {
             }}
           />
         </Typography>
-        <Swiper
-          slidesPerView={3}
-          speed={2000}
-          // spaceBetween={150}
-          loop={true}
-          // centeredSlides={true}
-          autoplay={{
-            delay: 600,
-            disableOnInteraction: false,
-          }}
-          modules={[Autoplay]}
-          className="mySwiper"
-        >
-          {sponsors.length > 0 &&
-            sponsors.map(
+        {sponsors.length > 0 && (
+          <Swiper
+            slidesPerView={4}
+            speed={2000}
+            spaceBetween={60}
+            loop={true}
+            centeredSlides={true}
+            autoplay={{
+              delay: 600,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay]}
+            className="mySwiper"
+          >
+            {sponsors.map(
               (
                 item: {
                   link: string | undefined;
@@ -84,24 +81,24 @@ const SponsorCarousel = () => {
                 index: number
               ) => (
                 <SwiperSlide key={index}>
-                  <Box>
-                    <Link target="_blank" href={item.link}>
-                      <WrapperImg>
-                        <img
-                          src={urlFor(item.img)
-                            .auto("format")
-                            .fit("scale")
-                            .url()
-                            .toString()}
-                          alt={item.title}
-                        />
-                      </WrapperImg>
+                  <WrapperImg>
+                    <Link
+                      href={item.link}
+                      target="_blank"
+                      underline="none"
+                      sx={{ display: "block" }}
+                    >
+                      <img
+                        src={urlFor(item.img).auto("format").url().toString()}
+                        alt={item.title}
+                      />
                     </Link>
-                  </Box>
+                  </WrapperImg>
                 </SwiperSlide>
               )
             )}
-        </Swiper>
+          </Swiper>
+        )}
         <Box
           sx={{
             marginTop: "56px",

@@ -9,10 +9,10 @@ import { RouterProvider } from "react-router-dom";
 import "./config/i18n";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  // <React.StrictMode>
-  <ThemeProvider theme={theme}>
-    <CssBaseline />
-    <RouterProvider router={routes} />
-  </ThemeProvider>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <RouterProvider router={routes} />
+    </ThemeProvider>
+  </React.StrictMode>
 );
