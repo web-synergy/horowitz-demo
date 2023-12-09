@@ -10,6 +10,7 @@ export const WrapperImg = styled(Box)(() => ({
   "& img": {
     width: "100%",
     height: "auto",
+    maxHeight: "150px",
     objectFit: "cover",
   },
 }));

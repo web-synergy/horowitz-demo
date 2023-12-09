@@ -1,9 +1,9 @@
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { Box } from '@mui/material';
-import { useHomeData } from '../../store';
-import { useTranslation } from 'react-i18next';
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { Box } from "@mui/material";
+import { useHomeData } from "../../store";
+import { useTranslation } from "react-i18next";
 
 const ResultsSection = () => {
   const { video } = useHomeData((state) => ({
@@ -12,45 +12,45 @@ const ResultsSection = () => {
   const { t } = useTranslation();
 
   return (
-    <Box component="section" sx={{ padding: '120px 0' }}>
+    <Box component="section" sx={{ padding: "120px 0" }}>
       <Container
         sx={{
-          paddingTop: '50px',
-          paddingBottom: '50px',
+          paddingTop: "50px",
+          paddingBottom: "50px",
         }}
       >
         <Typography
           variant="h4"
           align="center"
           sx={{
-            position: 'relative',
-            marginBottom: '66px',
+            position: "relative",
+            marginBottom: "66px",
 
-            fontSize: '32px',
+            fontSize: "32px",
             fontWeight: 600,
-            lineHeight: 'normal',
+            lineHeight: "normal",
           }}
         >
-          {t('main.watchTitle')}
+          {t("main.watchTitle")}
           <span
             style={{
-              position: 'absolute',
-              bottom: '-8px',
-              left: '50%',
-              transform: 'translateX(-50%)',
+              position: "absolute",
+              bottom: "-8px",
+              left: "50%",
+              transform: "translateX(-50%)",
               content: "''",
-              width: '98px',
-              height: '2px',
-              backgroundColor: '#131333',
-              display: 'block',
+              width: "98px",
+              height: "2px",
+              backgroundColor: "#131333",
+              display: "block",
             }}
           />
         </Typography>
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
             gap: 3,
           }}
         >
@@ -59,22 +59,11 @@ const ResultsSection = () => {
           {video &&
             video.map((item, index) => (
               <Box key={index}>
-                <Box sx={{ textAlign: 'start' }}>
-                  {/* <video
-                src="https://www.example.com/path-to-your-video/video.mp4"
-                // alt="video"
-                style={{
-                  width: "100%",
-                  height: "198px",
-                  display: "block",
-                  borderRadius: "4px",
-                }}
-                controls
-              /> */}
+                <Box sx={{ textAlign: "start", PointerEvents: "none" }}>
                   <iframe
                     style={{
-                      border: 'none',
-                      borderRadius: '4px',
+                      border: "none",
+                      borderRadius: "4px",
                     }}
                     width="356"
                     height="198"
@@ -86,11 +75,11 @@ const ResultsSection = () => {
                   <Typography
                     variant="h6"
                     sx={{
-                      marginTop: '20px',
-                      fontSize: '20px',
+                      marginTop: "20px",
+                      fontSize: "20px",
                       fontWeight: 600,
-                      lineHeight: 'normal',
-                      textTransform: 'uppercase',
+                      lineHeight: "normal",
+                      textTransform: "uppercase",
                     }}
                   >
                     {item.title}
@@ -101,27 +90,27 @@ const ResultsSection = () => {
         </Box>
         <Box
           sx={{
-            marginTop: '56px',
-            display: 'flex',
-            justifyContent: 'center',
+            marginTop: "56px",
+            display: "flex",
+            justifyContent: "center",
           }}
         >
           <Button
             variant="outlined"
             sx={{
-              fontSize: '18px',
+              fontSize: "18px",
               fontWeight: 400,
-              lineHeight: 'normal',
-              padding: '10px 20px',
-              height: '56px',
-              color: '#131333',
-              backgroundColor: 'transparent',
-              textTransform: 'none',
-              borderRadius: '24px',
-              border: '1.5px solid #131333',
+              lineHeight: "normal",
+              padding: "10px 20px",
+              height: "56px",
+              color: "#131333",
+              backgroundColor: "transparent",
+              textTransform: "none",
+              borderRadius: "24px",
+              border: "1.5px solid #131333",
             }}
           >
-            {t('main.watchBtn')}
+            {t("main.watchBtn")}
           </Button>
         </Box>
       </Container>
