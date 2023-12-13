@@ -2,7 +2,9 @@ import { createBrowserRouter } from 'react-router-dom';
 import SharedLayout from '../components/SharedLayout/SharedLayout';
 import MainPage from '../components/MainPage/MainPage';
 import News from '../components/News/News';
+import NewsItem from '../components/NewsItem/NewsItem';
 import Stub from '../components/Stub/Stub';
+import { newsLoader as singleNewsLoader } from '../components/NewsItem/NewsItem';
 
 const routes = createBrowserRouter([
   {
@@ -28,6 +30,11 @@ const routes = createBrowserRouter([
       {
         path: '/news',
         element: <News />,
+      },
+      {
+        path: '/news/:newsSlug',
+        element: <NewsItem />,
+        loader: singleNewsLoader,
       },
       {
         path: '/contacts',
