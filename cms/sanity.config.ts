@@ -6,6 +6,8 @@ import {schemaTypes} from './schemas'
 import {internationalizedArray} from 'sanity-plugin-internationalized-array'
 import {projectId} from './environment'
 import {languages} from './language'
+import structure from './lib/structure'
+import {defaultDocumentNode} from './lib/defaultDocumentNode'
 
 export default defineConfig({
   name: 'default',
@@ -16,15 +18,8 @@ export default defineConfig({
 
   plugins: [
     deskTool({
-      structure: (S) =>
-        S.list()
-          .title('Контент')
-          .items([
-            S.listItem()
-              .title('Головна')
-              .child(S.document().schemaType('home').documentId('home').title('Головна')),
-            S.documentTypeListItem('news'),
-          ]),
+      structure: structure,
+      defaultDocumentNode: defaultDocumentNode,
     }),
     visionTool(),
 
@@ -32,7 +27,6 @@ export default defineConfig({
       languages: languages,
       defaultLanguages: [languages[0].id],
       buttonAddAll: false,
-
       fieldTypes: ['string', 'text', 'content'],
     }),
   ],

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Container, Stack, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { getNews } from '../../api';
 import { useTranslation } from 'react-i18next';
 import { INews } from '../../api';
@@ -36,24 +37,27 @@ const News = () => {
                 alt="news foto"
                 style={{
                   width: 200,
-                  height: 'auto',
+                  height: 200,
                   display: 'block',
                   borderRadius: '4px',
                 }}
               />
               <Stack>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    marginTop: '20px',
-                    fontSize: '24px',
-                    fontWeight: 600,
-                    lineHeight: 'normal',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {item.title}
-                </Typography>
+                <Link to={`/news/${item.slug}`}>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      marginTop: '20px',
+                      fontSize: '24px',
+                      fontWeight: 600,
+                      lineHeight: 'normal',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                </Link>
+
                 <Typography
                   variant="body2"
                   component={'span'}
