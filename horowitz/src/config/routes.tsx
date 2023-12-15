@@ -1,15 +1,22 @@
 import { createBrowserRouter } from 'react-router-dom';
-import SharedLayout from '../components/SharedLayout/SharedLayout';
+import SharedLayout, { Loader } from '../components/SharedLayout/SharedLayout';
 import MainPage from '../components/MainPage/MainPage';
-import News from '../components/News/News';
-import NewsItem from '../components/NewsItem/NewsItem';
+import News, { newsLoader } from '../components/News/News';
+import NewsItem, { newsItemLoader } from '../components/NewsItem/NewsItem';
 import Stub from '../components/Stub/Stub';
-import { newsLoader as singleNewsLoader } from '../components/NewsItem/NewsItem';
-import { Loader } from '../components/SharedLayout/SharedLayout';
+
+import LangRedirect, {
+  langAction,
+} from '../components/LangRedirect/LangRedirect';
 
 const routes = createBrowserRouter([
   {
     path: '/',
+    loader: langAction,
+    element: <LangRedirect />,
+  },
+  {
+    path: '/:lang',
     element: <SharedLayout />,
     loader: Loader,
     children: [
@@ -18,35 +25,39 @@ const routes = createBrowserRouter([
         element: <MainPage />,
       },
       {
-        path: '/about',
+        path: 'about',
         element: <Stub />,
       },
       {
-        path: '/history',
+        path: 'history',
         element: <Stub />,
       },
       {
-        path: '/projects',
+        path: 'projects',
         element: <Stub />,
       },
       {
-        path: '/news',
+        path: 'news',
         element: <News />,
+        loader: newsLoader,
       },
       {
-        path: '/news/:newsSlug',
+        path: 'news/:newsSlug',
         element: <NewsItem />,
-        loader: singleNewsLoader,
+        loader: newsItemLoader,
       },
       {
-        path: '/contacts',
+        path: 'contacts',
         element: <Stub />,
       },
       {
-        path: '/sponsors',
+        path: 'sponsors',
         element: <Stub />,
       },
     ],
+  },
+  {
+    path: '*',
   },
 ]);
 

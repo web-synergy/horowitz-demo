@@ -1,5 +1,6 @@
 import { client } from '../lib/client';
 import { PortableTextBlock } from '@portabletext/types';
+import groq from 'groq';
 
 import { currentNewsQuery, homeQuery, newsQuery } from './query';
 import { QueryParams } from '@sanity/client';
@@ -7,7 +8,7 @@ const DEFAULT_PARAMS = {} as QueryParams;
 export async function sanityFetch<T>(
   query: string,
   params = DEFAULT_PARAMS,
-  draft?: boolean
+  draft= false
 ): Promise<T> {
   const secretToken = import.meta.env.VITE_SANITY_SECRET_TOKEN ?? '';
   const token = draft ? secretToken : '';
@@ -25,9 +26,16 @@ export async function sanityFetch<T>(
     .fetch<T>(query, params);
 }
 export const token = import.meta.env.VITE_SANITY_SECRET_TOKEN;
-
+interface HomeDataType {
+  banner: any;
+  news: any[];
+  sponsors: any[];
+  winner: any[];
+  videos: any[];
+  quote: any;
+}
 export const getHomeData = async (language: string, draft?: boolean) => {
-  return sanityFetch(homeQuery, { language }, draft);
+  return sanityFetch<HomeDataType>(homeQuery, { language }, draft);
 };
 
 export interface INews {
