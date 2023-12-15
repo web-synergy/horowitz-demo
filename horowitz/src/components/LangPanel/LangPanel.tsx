@@ -8,9 +8,9 @@ import {
   Divider,
   styled,
 } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
-const languages = ['ua', 'en'];
+import { languages } from '../../config/constants';
 
 interface StyledFormControlLabelProps extends FormControlLabelProps {
   checked: boolean;
@@ -39,6 +39,8 @@ interface LangPanelProps {
 }
 
 const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const {
     i18n: { language, changeLanguage },
   } = useTranslation();
@@ -46,6 +48,10 @@ const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
   const onChangeLang = (event: ChangeEvent<HTMLInputElement>) => {
     const value = (event.target as HTMLInputElement).value;
     changeLanguage(value);
+
+    const path = location.pathname.split('/').slice(2).join('/');
+
+    navigate(`/${value}/${path}`);
 
     if (additionalClickFn) {
       additionalClickFn();
