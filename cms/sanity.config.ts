@@ -18,8 +18,8 @@ export default defineConfig({
 
   plugins: [
     deskTool({
-      structure: structure,
-      defaultDocumentNode: defaultDocumentNode,
+      structure,
+      defaultDocumentNode,
     }),
     visionTool(),
 

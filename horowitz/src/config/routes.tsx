@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import SharedLayout from '../components/SharedLayout/SharedLayout';
+import SharedLayout, { Loader } from '../components/SharedLayout/SharedLayout';
 import MainPage from '../components/MainPage/MainPage';
 import News, { newsLoader } from '../components/News/News';
 import NewsItem, { newsItemLoader } from '../components/NewsItem/NewsItem';
@@ -18,6 +18,7 @@ const routes = createBrowserRouter([
   {
     path: '/:lang',
     element: <SharedLayout />,
+    loader: Loader,
     children: [
       {
         index: true,

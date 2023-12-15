@@ -4,6 +4,7 @@ export default defineType({
   name: 'home',
   title: 'Головна',
   type: 'document',
+
   groups: [
     {
       name: 'sponsors',

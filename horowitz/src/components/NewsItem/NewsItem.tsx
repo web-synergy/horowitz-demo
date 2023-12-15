@@ -9,6 +9,9 @@ import {
 import { PortableText } from '@portabletext/react';
 import { getNewsBySlug } from '../../api';
 import { INews } from '../../api';
+import { useLiveQuery } from '@sanity/preview-kit';
+import { currentNewsQuery } from '../../api/query';
+import { useTranslation } from 'react-i18next';
 
 const PathNames = {
   newsDetail: '/:lang/news/:newsSlug',
@@ -24,29 +27,36 @@ export const newsItemLoader: LoaderFunction = async ({
 }: Args) => {
   const url = new URL(request.url);
   const draft = url.searchParams.get('draft');
-  const newSlug = params.newsSlug ?? '';
+  const slug = params.newsSlug ?? '';
   const lang = params.lang ?? '';
 
-  const article = await getNewsBySlug(newSlug, lang, !!draft);
-  return { article };
+  const article = await getNewsBySlug(slug, lang, !!draft);
+  return { article, slug };
 };
 
 const NewsItem = () => {
-  const { article } = useLoaderData() as { article: INews };
+  const { article, slug } = useLoaderData() as {
+    article: INews;
+    slug: boolean;
+  };
+  const {
+    i18n: { language },
+  } = useTranslation();
+
+  const [data] = useLiveQuery([article], currentNewsQuery, { language, slug });
 
   if (!article) {
     return (
       <Stack p={6}>
-        <Typography variant="h2">Такої новини немає</Typography>
+        <Typography variant='h2'>Такої новини немає</Typography>
       </Stack>
     );
   }
 
-  console.log(article);
   return (
     <Stack p={6}>
-      <Typography variant="h2">{article.title}</Typography>
-      <PortableText value={article.description[0]} />
+      <Typography variant='h2'>{data[0]?.title}</Typography>
+      <PortableText value={data[0]?.description[0]} />
     </Stack>
   );
 };
