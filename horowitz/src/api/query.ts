@@ -8,19 +8,20 @@ export const homeQuery = groq`*[_type == 'home'][0]{
       'banner':banner{
       'title':  title[_key ==$language].value,
        'dateEvent':dateEvent[_key ==$language].value,
-       'img':img.asset ->url
+       'img':img.asset->url
 
       },
     'winner':winner[]{
     'name': name[_key ==$language].value,
     'champion': champion[_key ==$language].value,
-      'img':img.asset ->url
+      img
+
 
     },
     'news':news[]->{
       'description':description[_key ==$language].value,
       'title':title[_key ==$language].value,
-      'img':img.asset->url
+      img
 
     },
     sponsors,
@@ -35,12 +36,12 @@ export const newsQuery = groq`*[_type=='news']{
     'slug':slug.current,
     'description':description[_key ==$language].value,
     'title':title[_key ==$language].value,
-    'img':img.asset->url
+    img
   }`;
 export const currentNewsQuery = groq`*[_type =="news" && slug.current==$slug]{
     _id, 
     'slug':slug.current,
     'description':description[_key ==$language].value,
     'title':title[_key ==$language].value,
-    'img':img.asset->url
+    img
   }`;
