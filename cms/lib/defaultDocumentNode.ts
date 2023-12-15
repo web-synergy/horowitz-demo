@@ -9,17 +9,18 @@ interface DocProps extends SanityDocument {
   }
 }
 
-function getPreviewUrl(doc: DocProps, add: string) {
+export function getPreviewUrl(doc: DocProps, add: string) {
   const slug = doc?.slug?.current
   const result = slug ? `${previewUrl}/${add}/${slug}?draft=true` : `${previewUrl}`
+
   console.log(previewUrl)
   console.log(result)
   return result
 }
-
 // Import this into the deskTool() plugin
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, {schemaType}) => {
   // Only show preview pane on `movie` schema type documents
+
   switch (schemaType) {
     case `news`:
       return S.document().views([
