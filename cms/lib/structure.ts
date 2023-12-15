@@ -22,7 +22,7 @@ const structure = (S: StructureBuilder) =>
                 .component(Iframe)
                 .title('Preview')
                 .options({
-                  url: ` ${previewUrl}?draft=true`,
+                  url: `${previewUrl}/ua/?draft=true`,
                   defaultSize: 'desktop',
                 }),
             ]),

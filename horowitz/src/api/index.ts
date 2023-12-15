@@ -1,6 +1,5 @@
 import { client } from '../lib/client';
 import { PortableTextBlock } from '@portabletext/types';
-import groq from 'groq';
 
 import { currentNewsQuery, homeQuery, newsQuery } from './query';
 import { QueryParams } from '@sanity/client';
@@ -8,7 +7,7 @@ const DEFAULT_PARAMS = {} as QueryParams;
 export async function sanityFetch<T>(
   query: string,
   params = DEFAULT_PARAMS,
-  draft= false
+  draft = false
 ): Promise<T> {
   const secretToken = import.meta.env.VITE_SANITY_SECRET_TOKEN ?? '';
   const token = draft ? secretToken : '';
@@ -51,17 +50,16 @@ export const getNews = async (language: string) => {
 
 export const getNewsBySlug = async (
   slug: string,
-  draft: boolean,
-  language = 'ua'
+  language: string,
+  draft: boolean
 ) => {
   const result = await sanityFetch(
     currentNewsQuery,
     {
-      language,
       slug,
+      language,
     },
     draft
   );
-  console.log(result);
   return result[0];
 };
