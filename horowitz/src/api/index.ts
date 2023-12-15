@@ -53,7 +53,7 @@ export const getNewsBySlug = async (
   language: string,
   draft: boolean
 ) => {
-  const result = await sanityFetch<any[]>(
+  const result = await sanityFetch<INews[]>(
     currentNewsQuery,
     {
       slug,
