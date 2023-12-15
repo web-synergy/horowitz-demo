@@ -1,23 +1,23 @@
 export const main = [
   {
     title: 'about',
-    href: '/about',
+    href: 'about',
   },
   {
     title: 'history',
-    href: '/history',
+    href: 'history',
   },
   {
     title: 'projects',
-    href: '/projects',
+    href: 'projects',
   },
   {
     title: 'news',
-    href: '/news',
+    href: 'news',
   },
   {
     title: 'contacts',
-    href: '/contacts',
+    href: 'contacts',
   },
 ];
 

@@ -11,18 +11,23 @@ import { getNewsBySlug } from '../../api';
 import { INews } from '../../api';
 
 const PathNames = {
-  newsDetail: '/news/:newsSlug',
+  newsDetail: '/:lang/news/:newsSlug',
 } as const;
 
 interface Args extends ActionFunctionArgs {
   params: Params<ParamParseKey<typeof PathNames.newsDetail>>;
 }
-export const newsLoader: LoaderFunction = async ({ params, request }: Args) => {
+
+export const newsItemLoader: LoaderFunction = async ({
+  params,
+  request,
+}: Args) => {
   const url = new URL(request.url);
   const draft = url.searchParams.get('draft');
-  const newSlug = params.newsSlug;
-  console.log(newSlug);
-  const article = await getNewsBySlug(newSlug ?? '', !!draft);
+  const newSlug = params.newsSlug ?? '';
+  const lang = params.lang ?? '';
+
+  const article = await getNewsBySlug(newSlug, lang, !!draft);
   return { article };
 };
 

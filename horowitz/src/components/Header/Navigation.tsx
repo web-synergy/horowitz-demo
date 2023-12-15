@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { main } from '../../config/navigation';
 
@@ -23,9 +23,10 @@ const Link = styled(RouterLink)({
 
 interface NavigationListProps {
   onClick: () => void;
+  locale: string;
 }
 
-const NavigationList: FC<NavigationListProps> = ({ onClick }) => {
+const NavigationList: FC<NavigationListProps> = ({ onClick, locale }) => {
   const { t } = useTranslation();
 
   return (
@@ -40,7 +41,7 @@ const NavigationList: FC<NavigationListProps> = ({ onClick }) => {
             onClick={onClick}
             sx={{ '&:hover': { color: (theme) => theme.palette.primary.main } }}
           >
-            <Link to={nav.href}>{title}</Link>
+            <Link to={`/${locale}/${nav.href}`}>{title}</Link>
           </MenuItem>
         );
       })}
@@ -54,6 +55,8 @@ const Navigation = () => {
   const [open, setMenu] = useState(false);
   const onCloseMenu = () => setMenu(false);
   const onOpenMenu = () => setMenu(true);
+  const location = useLocation();
+  const locale = location.pathname.split('/')[1];
 
   const onClickMenuItem = () => {
     if (!isDesktop) {
@@ -68,7 +71,7 @@ const Navigation = () => {
   }, [isDesktop, open]);
 
   if (isDesktop) {
-    return <NavigationList onClick={onClickMenuItem} />;
+    return <NavigationList onClick={onClickMenuItem} locale={locale} />;
   }
 
   return (
@@ -82,7 +85,7 @@ const Navigation = () => {
             <CloseIcon />
           </IconButton>
         </Stack>
-        <NavigationList onClick={onClickMenuItem} />
+        <NavigationList onClick={onClickMenuItem} locale={locale} />
       </Dialog>
     </>
   );
