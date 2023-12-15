@@ -1,10 +1,17 @@
 import { client } from '../lib/client';
 import { PortableTextBlock } from '@portabletext/types';
-import groq from 'groq';
 
-export async function sanityFetch<T>(query: string, draft = false) {
+import { currentNewsQuery, homeQuery, newsQuery } from './query';
+import { QueryParams } from '@sanity/client';
+const DEFAULT_PARAMS = {} as QueryParams;
+export async function sanityFetch<T>(
+  query: string,
+  params = DEFAULT_PARAMS,
+  draft = false
+): Promise<T> {
   const secretToken = import.meta.env.VITE_SANITY_SECRET_TOKEN ?? '';
   const token = draft ? secretToken : '';
+
   if (draft && token === '') {
     throw new Error(
       'The `VITE_SANITY_SECRET_TOKEN` environment variable is required.'
@@ -15,9 +22,9 @@ export async function sanityFetch<T>(query: string, draft = false) {
 
   return client
     .withConfig({ token: token, perspective: perspective })
-    .fetch<T>(query);
+    .fetch<T>(query, params);
 }
-
+export const token = import.meta.env.VITE_SANITY_SECRET_TOKEN;
 interface HomeDataType {
   banner: any;
   news: any[];
@@ -26,41 +33,8 @@ interface HomeDataType {
   videos: any[];
   quote: any;
 }
-export const getHomeData = async (language = 'ua') => {
-  const query = groq`*[_type == 'home'][0]{
-  'quote':quote{
-     'author': author[_key =='${language}'].value,
-       'quote':quote[_key =='${language}'].value,
-   },
-
-        'banner':banner{
-        'title':  title[_key =='${language}'].value,
-         'dateEvent':dateEvent[_key =='${language}'].value,
-         'img':img.asset ->url
-
-        },
-      'winner':winner[]{
-      'name': name[_key =='${language}'].value,
-      'champion': champion[_key =='${language}'].value,
-        'img':img.asset ->url
-
-      },
-      'news':news[]->{
-        'description':description[_key =='${language}'].value,
-        'title':title[_key =='${language}'].value,
-        'img':img.asset->url
-
-      },
-      sponsors,
-      'videos':videos[]{
-        'title':title[_key =='${language}'].value,
-        link
-      },
-  }`;
-
-  const result = await sanityFetch<HomeDataType>(query);
-
-  return result;
+export const getHomeData = async (language: string, draft?: boolean) => {
+  return sanityFetch<HomeDataType>(homeQuery, { language }, draft);
 };
 
 export interface INews {
@@ -70,29 +44,22 @@ export interface INews {
   description: PortableTextBlock[];
   img: string;
 }
-export const getNews = async (lang: string) => {
-  return client.fetch<INews[]>(groq`*[_type=='news']{
-    _id, 
-    'slug':slug.current,
-    'description':description[_key =='${lang}'].value,
-    'title':title[_key =='${lang}'].value,
-    'img':img.asset->url
-  }`);
+export const getNews = async (language: string) => {
+  return client.fetch<INews[]>(newsQuery, { language });
 };
 
 export const getNewsBySlug = async (
   slug: string,
-  lang: string,
+  language: string,
   draft: boolean
 ) => {
-  const query = groq`*[_type =="news" && slug.current=="${slug}"]{
-    _id, 
-    'slug':slug.current,
-    'description':description[_key =='${lang}'].value,
-    'title':title[_key =='${lang}'].value,
-    'img':img.asset->url
-  }`;
-  const result = await sanityFetch<INews[]>(query, draft);
-  console.log(result);
+  const result = await sanityFetch<INews[]>(
+    currentNewsQuery,
+    {
+      slug,
+      language,
+    },
+    draft
+  );
   return result[0];
 };

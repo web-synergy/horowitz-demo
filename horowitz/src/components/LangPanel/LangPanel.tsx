@@ -50,8 +50,7 @@ const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
     changeLanguage(value);
 
     const path = location.pathname.split('/').slice(2).join('/');
-
-    navigate(`/${value}/${path}`);
+    navigate(`/${value}/${path}${location.search}`);
 
     if (additionalClickFn) {
       additionalClickFn();
@@ -61,12 +60,11 @@ const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
   return (
     <FormControl>
       <RadioGroup
-        aria-label="language-panel"
-        name="language"
+        aria-label='language-panel'
+        name='language'
         value={language}
         onChange={onChangeLang}
-        row
-      >
+        row>
         <StyledFormControlLabel
           value={languages[0]}
           control={<Radio sx={{ display: 'none' }} />}
@@ -75,7 +73,7 @@ const LangPanel: FC<LangPanelProps> = ({ additionalClickFn }) => {
           key={languages[0]}
           aria-label={`Вибрати українську`}
         />
-        <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
+        <Divider orientation='vertical' flexItem sx={{ mx: 1 }} />
 
         <StyledFormControlLabel
           value={languages[1]}
