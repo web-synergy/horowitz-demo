@@ -32,15 +32,15 @@ const NewsItem = () => {
   if (!article) {
     return (
       <Stack p={6}>
-        <Typography variant="h2">Такої новини немає</Typography>
+        <Typography variant='h2'>Такої новини немає</Typography>
       </Stack>
     );
   }
 
-  console.log(article);
+  console.log('loa', article);
   return (
     <Stack p={6}>
-      <Typography variant="h2">{article.title}</Typography>
+      <Typography variant='h2'>{article.title}</Typography>
       <PortableText value={article.description[0]} />
     </Stack>
   );
