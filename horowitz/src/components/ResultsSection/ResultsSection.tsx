@@ -4,12 +4,19 @@ import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
 import { useHomeData } from "../../store";
 import { useTranslation } from "react-i18next";
+import ReactPlayer from "react-player/youtube";
 
 const ResultsSection = () => {
   const { video } = useHomeData((state) => ({
     video: state.video,
   }));
   const { t } = useTranslation();
+
+  const youtubeConfig = {
+    playerVars: {
+      showinfo: 1,
+    },
+  };
 
   return (
     <Box component="section" sx={{ padding: "120px 0" }}>
@@ -60,18 +67,13 @@ const ResultsSection = () => {
             video.map((item, index) => (
               <Box key={index}>
                 <Box sx={{ textAlign: "start", PointerEvents: "none" }}>
-                  <iframe
-                    style={{
-                      border: "none",
-                      borderRadius: "4px",
-                    }}
-                    width="356"
-                    height="198"
-                    src={item?.link}
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+                  <ReactPlayer
+                    url="https://www.youtube.com/live/c6i70DSxhOo?si=rhLq0tWGBZdijo_I"
+                    width="356px"
+                    height="214px"
+                    controls={true}
+                    config={youtubeConfig}
+                  />
                   <Typography
                     variant="h6"
                     sx={{

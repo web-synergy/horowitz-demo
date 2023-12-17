@@ -1,13 +1,13 @@
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { Box } from '@mui/material';
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { Box } from "@mui/material";
 
-import { useHomeData } from '../../store';
+import { useHomeData } from "../../store";
 
-import { urlFor } from '../../lib/client';
-import { PortableText } from '@portabletext/react';
-import { useTranslation } from 'react-i18next';
+import { urlFor } from "../../lib/client";
+import { PortableText } from "@portabletext/react";
+import { useTranslation } from "react-i18next";
 
 const NewsSection = () => {
   const { news } = useHomeData((state) => ({
@@ -16,82 +16,82 @@ const NewsSection = () => {
   const { t } = useTranslation();
 
   return (
-    <Box component="section" sx={{ padding: '120px 0' }}>
+    <Box component="section" sx={{ padding: "120px 0" }}>
       <Container>
         <Typography
           variant="h4"
           align="center"
           sx={{
-            position: 'relative',
-            marginBottom: '66px',
-            fontSize: '32px',
+            position: "relative",
+            marginBottom: "66px",
+            fontSize: "32px",
             fontWeight: 600,
-            lineHeight: 'normal',
+            lineHeight: "normal",
           }}
         >
-          {t('main.newsTitle')}
+          {t("main.newsTitle")}
           <span
             style={{
-              position: 'absolute',
-              bottom: '-8px',
-              left: '50%',
-              transform: 'translateX(-50%)',
+              position: "absolute",
+              bottom: "-8px",
+              left: "50%",
+              transform: "translateX(-50%)",
               content: "''",
-              width: '98px',
-              height: '2px',
-              backgroundColor: '#131333',
-              display: 'block',
+              width: "98px",
+              height: "2px",
+              backgroundColor: "#131333",
+              display: "block",
             }}
           />
         </Typography>
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
             gap: 3,
           }}
         >
           {/* Карточка новини 1 */}
           {news &&
             news.map((item, index) => (
-              <Box key={index} sx={{ width: '356px' }}>
+              <Box key={index} sx={{ width: "356px" }}>
                 <img
                   src={urlFor(item.img)
-                    .auto('format')
-                    .fit('scale')
+                    .auto("format")
+                    .fit("scale")
                     .url()
                     .toString()}
                   alt="news foto"
                   style={{
-                    width: '100%',
-                    height: 'auto',
-                    display: 'block',
-                    borderRadius: '4px',
+                    width: "100%",
+                    height: "auto",
+                    display: "block",
+                    borderRadius: "4px",
                   }}
                 />
 
                 <Typography
                   variant="h6"
                   sx={{
-                    marginTop: '20px',
-                    fontSize: '24px',
+                    marginTop: "20px",
+                    fontSize: "24px",
                     fontWeight: 600,
-                    lineHeight: 'normal',
-                    textTransform: 'uppercase',
+                    lineHeight: "normal",
+                    textTransform: "uppercase",
                   }}
                 >
                   {item.title}
                 </Typography>
                 <Typography
                   variant="body2"
-                  component={'span'}
+                  component={"span"}
                   sx={{
-                    marginTop: '20px',
-                    fontSize: '18px',
+                    marginTop: "20px",
+                    fontSize: "18px",
                     fontWeight: 400,
-                    lineHeight: 'normal',
-                    textTransform: 'uppercase',
+                    lineHeight: "normal",
+                    textTransform: "uppercase",
                   }}
                 >
                   <PortableText value={item.description[0]} />
@@ -101,28 +101,28 @@ const NewsSection = () => {
         </Box>
         <Box
           sx={{
-            marginTop: '56px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            marginTop: "56px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Button
             variant="outlined"
             sx={{
-              fontSize: '18px',
+              fontSize: "18px",
               fontWeight: 400,
-              lineHeight: 'normal',
-              padding: '10px 20px',
-              height: '56px',
-              color: '#131333',
-              backgroundColor: 'transparent',
-              textTransform: 'none',
-              borderRadius: '24px',
-              border: '1.5px solid #131333',
+              lineHeight: "normal",
+              padding: "10px 20px",
+              height: "56px",
+              color: "#131333",
+              backgroundColor: "transparent",
+              textTransform: "none",
+              borderRadius: "24px",
+              border: "1.5px solid #131333",
             }}
           >
-            {t('main.newsBtn')}
+            {t("main.newsBtn")}
           </Button>
         </Box>
       </Container>
