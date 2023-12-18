@@ -5,14 +5,11 @@ import News, { newsLoader } from '../components/News/News';
 import NewsItem, { newsItemLoader } from '../components/NewsItem/NewsItem';
 import Stub from '../components/Stub/Stub';
 
-import LangRedirect, {
-  langAction,
-} from '../components/LangRedirect/LangRedirect';
+import LangRedirect from '../components/LangRedirect/LangRedirect';
 
 const routes = createBrowserRouter([
   {
     path: '/',
-    loader: langAction,
     element: <LangRedirect />,
   },
   {

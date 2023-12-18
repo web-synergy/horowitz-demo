@@ -1,2 +1,2 @@
-export const localStorageKey = 'locale';
+export const localStorageKey = 'i18nextLng';
 export const languages = ['ua', 'en'];

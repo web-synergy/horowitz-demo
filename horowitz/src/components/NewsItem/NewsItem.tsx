@@ -45,17 +45,17 @@ const NewsItem = () => {
 
   const [data] = useLiveQuery([article], currentNewsQuery, { language, slug });
 
-  if (!article) {
+  if (!data) {
     return (
       <Stack p={6}>
-        <Typography variant='h2'>Такої новини немає</Typography>
+        <Typography variant="h2">Такої новини немає</Typography>
       </Stack>
     );
   }
 
   return (
     <Stack p={6}>
-      <Typography variant='h2'>{data[0]?.title}</Typography>
+      <Typography variant="h2">{data[0]?.title}</Typography>
       <PortableText value={data[0]?.description[0]} />
     </Stack>
   );

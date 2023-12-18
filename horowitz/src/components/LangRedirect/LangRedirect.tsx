@@ -1,14 +1,12 @@
-import { redirect } from 'react-router-dom';
-import { localStorageKey } from '../../config/constants';
+import { Navigate } from 'react-router-dom';
 
-export const langAction = () => {
-  const langFromStorage = localStorage.getItem(localStorageKey);
-  const locale = langFromStorage ? langFromStorage : 'ua';
-  return redirect(`/${locale}`);
-};
+import { useTranslation } from 'react-i18next';
 
 const LangRedirect = () => {
-  return null;
+  const {
+    i18n: { language },
+  } = useTranslation();
+  return <Navigate to={`/${language}`} />;
 };
 
 export default LangRedirect;
