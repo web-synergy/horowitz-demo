@@ -1,15 +1,15 @@
 import { TypographyOptions } from '@mui/material/styles/createTypography';
 
 export const typography: TypographyOptions = {
-  fontFamily: 'Mulish',
+  fontFamily: 'Pragmatica',
   allVariants: {
     lineHeight: 'normal;',
   },
 
   button: {
-    fontFamily: 'Mulish',
+    fontFamily: 'Pragmatica',
     fontSize: 18,
-    fontWeight: 600,
+    fontWeight: 400,
     lineHeight: 'normal',
   },
 };

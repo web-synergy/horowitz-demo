@@ -1,56 +1,56 @@
-import { Box, Container, Link, Typography } from "@mui/material";
-import logo from "../Header/logo.png";
+import { Box, Container, Link, Typography } from '@mui/material';
+import logo from '../Header/logo.svg';
 
-import { styled } from "@mui/system";
+import { styled } from '@mui/system';
 
 const SocialIcon = styled(Box)(() => ({
-  width: "36px",
-  height: "36px",
-  borderRadius: "50%",
-  backgroundColor: "#C3BDBD",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  cursor: "pointer",
-  transition: "background-color 0.3s ease",
-  "&:hover": {
-    backgroundColor: "orange",
+  width: '36px',
+  height: '36px',
+  borderRadius: '50%',
+  backgroundColor: '#C3BDBD',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  cursor: 'pointer',
+  transition: 'background-color 0.3s ease',
+  '&:hover': {
+    backgroundColor: 'orange',
   },
 }));
 
 const Footer = () => {
   return (
-    <Box sx={{ bgcolor: "#010217", color: "#fff", padding: "32px 0" }}>
+    <Box sx={{ bgcolor: '#010217', color: '#fff', padding: '32px 0' }}>
       <Container sx={{ py: 4 }}>
         <Box
           sx={{
-            display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'space-between',
           }}
         >
           <Box>
             <Box
               sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: " flex-start",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: ' flex-start',
               }}
             >
               {/* Логотип */}
               <img
                 src={logo}
                 alt="Logo"
-                style={{ width: "200px", height: "auto" }}
+                style={{ width: '200px', height: 'auto' }}
               />
             </Box>
             <Box
               sx={{
-                display: "flex",
-                justifyContent: "flex-start",
-                gap: "16px",
+                display: 'flex',
+                justifyContent: 'flex-start',
+                gap: '16px',
 
-                marginTop: " 24px",
+                marginTop: ' 24px',
               }}
             >
               <Box>
@@ -134,27 +134,27 @@ const Footer = () => {
             </Box>
           </Box>
 
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <Typography
               variant="h6"
-              sx={{ fontSize: "16px", fontWeight: 600, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 600, lineHeight: 'normal' }}
             >
               Про нас
             </Typography>
 
             <Typography
               variant="body1"
-              sx={{ fontSize: "16px", fontWeight: 400, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 400, lineHeight: 'normal' }}
             >
-              <Link underline="hover" sx={{ color: "inherit" }} href="#">
+              <Link underline="hover" sx={{ color: 'inherit' }} href="#">
                 Конкурс Горовиця
               </Link>
             </Typography>
             <Typography
               variant="body2"
-              sx={{ fontSize: "16px", fontWeight: 400, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 400, lineHeight: 'normal' }}
             >
-              <Link underline="hover" href="#" sx={{ color: "inherit" }}>
+              <Link underline="hover" href="#" sx={{ color: 'inherit' }}>
                 Конкурс Горовиця
                 <br />
                 Київ-Женева
@@ -162,26 +162,26 @@ const Footer = () => {
             </Typography>
             <Typography
               variant="body2"
-              sx={{ fontSize: "16px", fontWeight: 400, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 400, lineHeight: 'normal' }}
             >
-              <Link underline="hover" href="#" sx={{ color: "inherit" }}>
+              <Link underline="hover" href="#" sx={{ color: 'inherit' }}>
                 Володимир Горовиць
               </Link>
             </Typography>
           </Box>
 
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <Typography
               variant="h6"
-              sx={{ fontSize: "16px", fontWeight: 600, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 600, lineHeight: 'normal' }}
             >
               XIV Конкурс
             </Typography>
             <Typography
               variant="body1"
-              sx={{ fontSize: "16px", fontWeight: 400, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 400, lineHeight: 'normal' }}
             >
-              <Link underline="hover" sx={{ color: "inherit" }} href="#">
+              <Link underline="hover" sx={{ color: 'inherit' }} href="#">
                 Горовиць Дебют/
                 <br />
                 Молодша група
@@ -189,9 +189,9 @@ const Footer = () => {
             </Typography>
             <Typography
               variant="body2"
-              sx={{ fontSize: "16px", fontWeight: 400, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 400, lineHeight: 'normal' }}
             >
-              <Link underline="hover" href="#" sx={{ color: "inherit" }}>
+              <Link underline="hover" href="#" sx={{ color: 'inherit' }}>
                 Середня група
                 <br />
                 (14-19 років)
@@ -199,9 +199,9 @@ const Footer = () => {
             </Typography>
             <Typography
               variant="body2"
-              sx={{ fontSize: "16px", fontWeight: 400, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 400, lineHeight: 'normal' }}
             >
-              <Link underline="hover" href="#" sx={{ color: "inherit" }}>
+              <Link underline="hover" href="#" sx={{ color: 'inherit' }}>
                 Старша група
                 <br />
                 (16-33 роки)
@@ -209,94 +209,94 @@ const Footer = () => {
             </Typography>
             <Typography
               variant="body2"
-              sx={{ fontSize: "16px", fontWeight: 400, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 400, lineHeight: 'normal' }}
             >
-              <Link underline="hover" href="#" sx={{ color: "inherit" }}>
+              <Link underline="hover" href="#" sx={{ color: 'inherit' }}>
                 Архів
               </Link>
             </Typography>
           </Box>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <Typography
               variant="h6"
-              sx={{ fontSize: "16px", fontWeight: 600, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 600, lineHeight: 'normal' }}
             >
               Проєкти
             </Typography>
 
             <Typography
               variant="body2"
-              sx={{ fontSize: "16px", fontWeight: 400, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 400, lineHeight: 'normal' }}
             >
-              <Link underline="hover" sx={{ color: "inherit" }} href="#">
+              <Link underline="hover" sx={{ color: 'inherit' }} href="#">
                 Майстер класи
               </Link>
             </Typography>
             <Typography
               variant="body2"
-              sx={{ fontSize: "16px", fontWeight: 400, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 400, lineHeight: 'normal' }}
             >
-              <Link underline="hover" href="#" sx={{ color: "inherit" }}>
+              <Link underline="hover" href="#" sx={{ color: 'inherit' }}>
                 Літня музична академія
               </Link>
             </Typography>
             <Typography
               variant="body2"
-              sx={{ fontSize: "16px", fontWeight: 400, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 400, lineHeight: 'normal' }}
             >
-              <Link underline="hover" href="#" sx={{ color: "inherit" }}>
+              <Link underline="hover" href="#" sx={{ color: 'inherit' }}>
                 Віртуози планети
               </Link>
             </Typography>
           </Box>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <Typography
               variant="h6"
-              sx={{ fontSize: "16px", fontWeight: 600, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 600, lineHeight: 'normal' }}
             >
               Новини
             </Typography>
           </Box>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <Typography
               variant="h6"
-              sx={{ fontSize: "16px", fontWeight: 600, lineHeight: "normal" }}
+              sx={{ fontSize: '16px', fontWeight: 600, lineHeight: 'normal' }}
             >
               Контакти
             </Typography>
 
-            <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <Link
                 underline="hover"
                 sx={{
-                  color: "inherit",
-                  fontSize: "16px",
+                  color: 'inherit',
+                  fontSize: '16px',
                   fontWeight: 400,
-                  lineHeight: "normal",
+                  lineHeight: 'normal',
                 }}
                 href="#"
               >
                 WFIMC
-              </Link>{" "}
+              </Link>{' '}
               <Link
                 underline="hover"
                 sx={{
-                  color: "inherit",
-                  fontSize: "16px",
+                  color: 'inherit',
+                  fontSize: '16px',
                   fontWeight: 400,
-                  lineHeight: "normal",
+                  lineHeight: 'normal',
                 }}
                 href="#"
               >
                 104 Rue de Carouge
-              </Link>{" "}
+              </Link>{' '}
               <Link
                 underline="hover"
                 sx={{
-                  color: "inherit",
-                  fontSize: "16px",
+                  color: 'inherit',
+                  fontSize: '16px',
                   fontWeight: 400,
-                  lineHeight: "normal",
+                  lineHeight: 'normal',
                 }}
                 href="#"
               >
@@ -304,16 +304,16 @@ const Footer = () => {
               </Link>
             </Box>
 
-            <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <Typography variant="body2">
                 <Link
                   underline="hover"
                   href="#"
                   sx={{
-                    color: "inherit",
-                    fontSize: "16px",
+                    color: 'inherit',
+                    fontSize: '16px',
                     fontWeight: 400,
-                    lineHeight: "normal",
+                    lineHeight: 'normal',
                   }}
                 >
                   horowitz@fmcim.org
@@ -324,10 +324,10 @@ const Footer = () => {
                   underline="hover"
                   href="#"
                   sx={{
-                    color: "inherit",
-                    fontSize: "16px",
+                    color: 'inherit',
+                    fontSize: '16px',
                     fontWeight: 400,
-                    lineHeight: "normal",
+                    lineHeight: 'normal',
                   }}
                 >
                   +41 22 321 3620
@@ -338,19 +338,19 @@ const Footer = () => {
         </Box>
         <Box
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: "32px",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '32px',
           }}
         >
           <Typography
             variant="body2"
             sx={{
-              color: "rgba(237, 237, 237, 0.60)",
-              fontSize: "16px",
+              color: 'rgba(237, 237, 237, 0.60)',
+              fontSize: '16px',
               fontWeight: 400,
-              lineHeight: "normal",
+              lineHeight: 'normal',
             }}
           >
             Copyright © Horowitz Competition Kyiv-Geneva. All right reserved

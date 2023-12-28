@@ -1,10 +1,28 @@
 {
   "navigation": {
-    "about": "About us",
-    "history": "Our history",
-    "projects": "Our projects",
-    "news": "News",
-    "contacts": "Contacts"
+    "main": {
+      "about": "About competition",
+      "competition": "XIV Competition",
+      "projects": "Projects",
+      "news": "News",
+      "contacts": "Contacts"
+    },
+    "about": {
+      "history": "Horowitz competition",
+      "kyiv-geneva": "Horowitz competition Kyiv-Geneva",
+      "horowitz": "Vladimir Horowitz"
+    },
+    "competition": {
+      "junior": "Horowitz Debut/Junior Group",
+      "intermediate": "Intermediate Group (14-19 years)",
+      "adult": "Senior Group (16-33 years)",
+      "archive": "Archive"
+    },
+    "projects": {
+      "workshops": "Master classes",
+      "summer-academy": "Summer Music Academy",
+      "virtuoso": "Virtuosos of the planet"
+    }
   },
   "main": {
     "submitApp": "Submit an application",

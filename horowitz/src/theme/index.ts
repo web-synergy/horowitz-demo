@@ -25,9 +25,9 @@ export const theme = createTheme({
   components,
   typography,
   header: {
-    mobile: { minHeight: 112 },
+    mobile: { minHeight: 102 },
     desktop: {
-      minHeight: 166,
+      minHeight: 102,
     },
   },
 });
