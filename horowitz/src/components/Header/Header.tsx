@@ -1,11 +1,9 @@
 import SearchIcon from '@mui/icons-material/Search';
-
 import {
   AppBar,
   Box,
   Container,
   Stack,
-  Typography,
   IconButton,
   Toolbar,
   useTheme,
@@ -14,7 +12,7 @@ import {
 import { Link } from 'react-router-dom';
 import LangPanel from '../LangPanel/LangPanel';
 import Navigation from './Navigation';
-import logo from './logo.png';
+import logo from './logo.svg';
 
 const Header = () => {
   const theme = useTheme();
@@ -26,21 +24,15 @@ const Header = () => {
         component="header"
         position="fixed"
         sx={{
-          backgroundColor: (theme) => theme.palette.gray.main,
+          backdropFilter: 'blur(6px)',
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+
           boxShadow: 'none',
           color: (theme) => theme.palette.text.secondary,
-          pb: 3,
         }}
       >
         <Toolbar>
           <Container>
-            <Stack
-              py={2}
-              alignItems="center"
-              sx={{ color: (theme) => theme.palette.gray.light }}
-            >
-              <Typography>Member of WFIMC & EMCY</Typography>
-            </Stack>
             <Stack
               direction="row"
               alignItems="center"
@@ -52,7 +44,7 @@ const Header = () => {
                   src={logo}
                   alt="Логотип"
                   sx={{
-                    width: '200px',
+                    width: '84px',
                     height: 'auto',
                     marginRight: { xs: 4, md: 6 },
                   }}
@@ -77,12 +69,12 @@ const Header = () => {
           </Container>
         </Toolbar>
       </AppBar>
-      <Box
+      {/* <Box
         sx={
           isDesktop ? { ...theme.header.desktop } : { ...theme.header.desktop }
         }
       />
-      <Box />
+      <Box /> */}
     </>
   );
 };

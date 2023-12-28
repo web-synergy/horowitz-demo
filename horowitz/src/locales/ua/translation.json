@@ -1,13 +1,31 @@
 {
   "navigation": {
-    "about": "Про проєкт",
-    "history": "Історія конкурсу",
-    "projects": "Наші проєкти",
-    "news": "Новини",
-    "contacts": "Контакти"
+    "main": {
+      "about": "Про нас",
+      "competition": "XIV Конкурс",
+      "projects": "Проєкти",
+      "news": "Новини",
+      "contacts": "Контакти"
+    },
+    "about": {
+      "history": "Конкурс Горовиця",
+      "kyiv-geneva": "Конкурс Горовиця Київ-Женева",
+      "horowitz": "Володимир Горовиць"
+    },
+    "competition": {
+      "junior": "Горовиць Дебют/Молодша група",
+      "intermediate": "Середня група (14-19 років)",
+      "adult": "Старша група (16-33 роки)",
+      "archive": "Архів"
+    },
+    "projects": {
+      "workshops": "Майстер класи",
+      "summer-academy": "Літня музична академія",
+      "virtuoso": "Віртуози планети"
+    }
   },
   "main": {
-    "submitApp": "Подати заявку",
+    "submitApp": "Заявка на участь",
     "supportProject": "Підтримати проєкт",
     "newsTitle": "Новини",
     "newsBtn": "Читати всі новини",

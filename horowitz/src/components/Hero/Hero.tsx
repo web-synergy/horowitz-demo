@@ -1,25 +1,40 @@
-import { Box, Button, Typography } from '@mui/material';
+import { useRef } from 'react';
+
+import { Box, Button, Container, IconButton, Stack } from '@mui/material';
 import { useHomeData } from '../../store';
 import { useTranslation } from 'react-i18next';
-import video from '../../assets/video-instagram (online-video-cutter.com).mp4';
+import { Video } from './styles';
+import video from '../../assets/media/video.mp4';
+import poster from '../../assets/media/poster.jpg';
+import picture from './images/piano-text.png';
+import emcy from './images/EMCY.svg';
+import wfmc from './images/WFMC.svg';
+
+import facebook from './images/facebook.svg';
+import insta from './images/insta.svg';
+import youtube from './images/youtube.svg';
 
 const Hero = () => {
   const { banner } = useHomeData();
   const { t } = useTranslation();
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  if (videoRef.current) {
+    videoRef.current.playbackRate = 0.7;
+  }
 
   return (
-    <div>
+    <>
       {banner && (
         <Box
           sx={{
             position: 'relative',
-            display: 'flex',
-            flexDirection: 'column',
+
             // backgroundImage: ` url(${banner.img})`,
             // backgroundSize: 'cover',
             // backgroundPosition: 'center',
             // backdropFilter: 'blur(2.5px)',
-            height: 'calc(100vh - 170px)',
+            height: '100vh',
             overflow: 'hidden',
             // paddingTop: '290px',
           }}
@@ -33,22 +48,17 @@ const Hero = () => {
               width: '100%',
               height: '100%',
               zIndex: 5,
-
-              '& video': {
-                minWidth: '100%',
-                minHeight: '100%',
-                width: 'auto',
-                height: 'auto',
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-              },
             }}
           >
-            <video autoPlay loop muted>
-              <source src={video} type="video/mp4" />
-            </video>
+            <Video
+              autoPlay
+              loop
+              muted
+              poster={poster}
+              src={video}
+              playback-rate={0.2}
+              ref={videoRef}
+            ></Video>
           </Box>
           <Box
             sx={{
@@ -59,96 +69,77 @@ const Hero = () => {
               left: '50%',
               transform: 'translate(-50%, -50%)',
               zIndex: 10,
-
-              background:
-                'linear-gradient(90deg, rgba(24,24,23,0.9) 0%, rgba(73,73,73,0.9) 50%, rgba(24,24,23,0.9) 100%)',
+              background: 'rgba(0, 0, 0, 0.70)',
+              backdropFilter: 'blur(6px)',
             }}
           ></Box>
-          <Box
+          <Container
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'flex-start',
-              gap: '24px',
-              maxWidth: '760px',
               position: 'relative',
               zIndex: 100,
               height: '100%',
-              marginLeft: '30px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
             }}
           >
-            <Typography
-              variant="h5"
-              align="center"
-              sx={{
-                color: '#F2F2F2',
-                fontSize: '24px',
-                fontWeight: 600,
-                lineHeight: 'normal',
-              }}
-            >
-              {banner.dateEvent}
-            </Typography>
-            <Typography
-              variant="h2"
-              sx={{
-                color: '#F2F2F2',
-                fontSize: '62px',
-                fontWeight: 600,
-                lineHeight: '80px',
-                textTransform: 'uppercase',
-              }}
-            >
-              {banner.title}
-            </Typography>
             <Box
               sx={{
                 display: 'flex',
-                justifyContent: 'center',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
               }}
             >
-              <Button
-                variant="contained"
+              <Box
                 sx={{
-                  fontSize: '18px',
-                  fontWeight: 700,
-                  lineHeight: 'normal',
-                  width: '214px',
-                  height: '56px',
-                  padding: '10px',
-                  marginRight: '16px',
-                  color: '#131333',
-                  backgroundColor: '#F2F2F2',
-                  textTransform: 'none',
-                  borderRadius: '2px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  maxWidth: '695px',
+                  gap: 6,
+                  height: '100%',
                 }}
               >
-                {t('main.submitApp')}
-              </Button>
-              <Button
-                variant="outlined"
-                sx={{
-                  fontSize: '18px',
-                  fontWeight: 500,
-                  lineHeight: 'normal',
-                  padding: '10px 20px',
-                  width: '214px',
-                  height: '56px',
-                  color: '#F2F2F2',
-                  backgroundColor: 'transparent',
-                  textTransform: 'none',
-                  borderRadius: '2px',
-                  border: ' 1.5px solid #F2F2F2',
-                }}
-              >
-                {t('main.supportProject')}
-              </Button>
+                <Box
+                  component={'img'}
+                  src={picture}
+                  alt="about competition"
+                  maxWidth="100%"
+                />
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+
+                    gap: 3,
+                  }}
+                >
+                  <Button variant="primary">{t('main.submitApp')}</Button>
+                  <Button variant="secondary">
+                    {t('main.supportProject')}
+                  </Button>
+                </Box>
+                <Box sx={{ mt: 3, display: 'flex', gap: 6 }}>
+                  <Box component={'img'} src={wfmc} width={249} />
+                  <Box component={'img'} src={emcy} width={240} />
+                </Box>
+              </Box>
+              <Stack direction="column" gap={2}>
+                <IconButton sx={{ p: 0 }}>
+                  <Box component={'img'} src={facebook} width={40} />
+                </IconButton>
+                <IconButton sx={{ p: 0 }}>
+                  <Box component={'img'} src={insta} width={40} />
+                </IconButton>
+                <IconButton sx={{ p: 0 }}>
+                  <Box component={'img'} src={youtube} width={40} />
+                </IconButton>
+              </Stack>
             </Box>
-          </Box>
+          </Container>
         </Box>
       )}
-    </div>
+    </>
   );
 };
 

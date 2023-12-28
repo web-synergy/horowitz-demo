@@ -13,7 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { main } from '../../config/navigation';
+import { nav } from '../../config/navigation';
 
 const Link = styled(RouterLink)({
   textDecoration: 'none',
@@ -21,12 +21,13 @@ const Link = styled(RouterLink)({
   fontSize: 18,
 });
 
-interface NavigationListProps {
+interface MainNavProps {
   onClick: () => void;
   locale: string;
 }
+const { main } = nav;
 
-const NavigationList: FC<NavigationListProps> = ({ onClick, locale }) => {
+const MainNav: FC<MainNavProps> = ({ onClick, locale }) => {
   const { t } = useTranslation();
 
   return (
@@ -34,7 +35,7 @@ const NavigationList: FC<NavigationListProps> = ({ onClick, locale }) => {
       sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' } }}
     >
       {main.map((nav) => {
-        const title = t(`navigation.${nav.title}`);
+        const title = t(`navigation.main.${nav.href}`);
         return (
           <MenuItem
             key={nav.href}
@@ -71,7 +72,7 @@ const Navigation = () => {
   }, [isDesktop, open]);
 
   if (isDesktop) {
-    return <NavigationList onClick={onClickMenuItem} locale={locale} />;
+    return <MainNav onClick={onClickMenuItem} locale={locale} />;
   }
 
   return (
@@ -85,7 +86,7 @@ const Navigation = () => {
             <CloseIcon />
           </IconButton>
         </Stack>
-        <NavigationList onClick={onClickMenuItem} locale={locale} />
+        <MainNav onClick={onClickMenuItem} locale={locale} />
       </Dialog>
     </>
   );
